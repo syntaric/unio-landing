@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unio | One region, one record — openEHR federation gateway</title>
+    <meta name="description" content="Unio joins the openEHR records held across a region into one, without moving any of them. Each hospital keeps its own system, its own data and its own governance.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://unio.syntaric.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://unio.syntaric.com/">
+    <meta property="og:title" content="Unio | One region, one record">
+    <meta property="og:description" content="Unio joins the openEHR records held across a region into one, without moving any of them. Each hospital keeps its own system, its own data and its own governance.">
+    <meta property="og:image" content="https://unio.syntaric.com/etc/unio-logo.png">
+    <meta property="og:site_name" content="Unio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Unio | One region, one record">
+    <meta name="twitter:description" content="Unio joins the openEHR records held across a region into one, without moving any of them.">
+    <meta name="twitter:image" content="https://unio.syntaric.com/etc/unio-logo.png">
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0c2842">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JSON-LD: SoftwareApplication + Organization + WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://unio.syntaric.com/#software",
+          "name": "Unio",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "Linux, Docker",
+          "url": "https://unio.syntaric.com/",
+          "description": "An openEHR federation gateway that joins the records held across a region into one, without moving any of them.",
+          "publisher": { "@id": "https://syntaric.com/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://syntaric.com/#organization",
+          "name": "Syntaric",
+          "url": "https://syntaric.com/",
+          "logo": "https://syntaric.com/etc/syntaric_logo_2.png",
+          "email": "info@syntaric.com",
+          "sameAs": ["https://www.linkedin.com/in/andrejcgasper/"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://unio.syntaric.com/#website",
+          "url": "https://unio.syntaric.com/",
+          "name": "Unio",
+          "publisher": { "@id": "https://syntaric.com/#organization" }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ================= MASTHEAD ================= -->
+<div class="masthead">
+  <div class="wrap mh">
+    <img src="etc/unio-logo.png" alt="Unio">
+    <nav aria-label="Primary"><a href="#why">Why Unio</a><a href="#regions">For regions</a><a href="#hospitals">For hospitals</a><a href="https://github.com/syntaric/unio" rel="noopener">Documentation</a></nav>
+    <div class="right">
+      
+      <a class="btn" href="#briefing">Arrange a briefing</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-inner">
+
+    <div>
+      <p class="kicker">For regions with more than one openEHR CDR</p>
+      <h1>One region.<span class="l2">One record.</span></h1>
+      <p class="lede">
+        Your hospitals already keep good records. They just keep them separately —
+        so a patient who moves between them arrives as a stranger.
+        Unio draws those records together into one, without moving a single one of them.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-lg" href="#briefing">Arrange a briefing</a>
+        <a class="btn btn-out btn-lg" href="#how">See how it works</a>
+      </div>
+      <p class="hero-foot">
+        Every hospital keeps its own system, its own data and its own governance.
+        Nothing is migrated, copied into a central store, or handed over.
+      </p>
+    </div>
+
+    <!-- ---------- THE REGION MAP ---------- -->
+    <figure class="mapfig" style="margin:0">
+      <svg viewBox="60 30 560 380" role="img" aria-label="Zuid-Limburg with five care organisations, their records drawn together">
+
+        <!-- faint graticule -->
+        <g>
+          <line class="gridline" x1="60" y1="94" x2="620" y2="94"/>
+          <line class="gridline" x1="60" y1="158" x2="620" y2="158"/>
+          <line class="gridline" x1="60" y1="222" x2="620" y2="222"/>
+          <line class="gridline" x1="60" y1="286" x2="620" y2="286"/>
+          <line class="gridline" x1="60" y1="350" x2="620" y2="350"/>
+          <line class="gridline" x1="152" y1="30" x2="152" y2="410"/>
+          <line class="gridline" x1="244" y1="30" x2="244" y2="410"/>
+          <line class="gridline" x1="336" y1="30" x2="336" y2="410"/>
+          <line class="gridline" x1="428" y1="30" x2="428" y2="410"/>
+          <line class="gridline" x1="520" y1="30" x2="520" y2="410"/>
+        </g>
+
+        <!-- Zuid-Limburg: a tall, narrow strip running north–south, pinched between
+             Belgium (west) and Germany (east), tapering to the point at Vaals. -->
+        <path class="terr" d="M286 52 C330 46, 372 58, 396 80 C418 100, 424 128, 438 152
+                              C452 176, 470 190, 476 214 C482 240, 466 258, 456 280
+                              C446 302, 452 322, 466 340 C480 358, 478 376, 458 386
+                              C438 396, 418 386, 400 372 C382 358, 366 348, 348 352
+                              C328 356, 316 374, 296 376 C274 378, 262 358, 258 336
+                              C254 312, 262 292, 258 270 C254 246, 238 232, 236 208
+                              C234 182, 248 164, 256 142 C264 118, 266 74, 286 52 Z"/>
+
+        <!-- Parkstad / eastern mining belt around Heerlen.
+             Outer edge retraces the landmass exactly so the tint cannot bleed past it. -->
+        <path class="terr-2" d="M396 80 C418 100, 424 128, 438 152
+                                C452 176, 470 190, 476 214 C482 240, 466 258, 456 280
+                                C446 302, 452 322, 466 340 C480 358, 478 376, 458 386
+                                C438 396, 418 386, 400 372 C382 358, 366 348, 348 352
+                                C356 320, 364 280, 374 232 C384 180, 392 128, 396 80 Z"/>
+        <!-- national boundary with Germany, as a dotted administrative line -->
+        <path d="M396 80 C392 128, 384 180, 374 232 C364 280, 356 320, 348 352"
+              fill="none" stroke="#98b0c0" stroke-width="1" stroke-dasharray="1 4" opacity=".9"/>
+
+        <!-- the Maas, running north along the western edge, kept inside the land -->
+        <path class="riv" d="M300 60 C286 98, 274 136, 272 176 C270 214, 278 250, 282 288
+                             C285 318, 290 344, 298 370"/>
+        <!-- the Geul, cutting north-east through the Heuvelland -->
+        <path class="riv" d="M282 288 C318 276, 350 282, 384 300 C410 314, 430 332, 448 350"
+              style="stroke-width:1.5;opacity:.6"/>
+
+        <!-- record threads: each care organisation to the shared view -->
+        <g>
+          <path class="thread" d="M322 108 C332 144, 340 176, 348 206"/>
+          <path class="thread" d="M424 214 C404 218, 386 222, 372 226"/>
+          <path class="thread" d="M292 306 C310 286, 328 262, 344 244"/>
+          <path class="thread" d="M418 322 C396 296, 374 268, 360 248"/>
+          <path class="thread" d="M306 344 C322 312, 336 280, 348 254"/>
+        </g>
+        <!-- the patient's own journey across the region, fainter -->
+        <path class="thread-2" d="M292 306 C330 290, 372 262, 424 214" style="stroke-dasharray:2 6"/>
+
+        <!-- neighbours and sub-region, set as map labels.
+             Belgium lies west AND south of Zuid-Limburg; Germany to the east.
+             The three meet at the Drielandenpunt, near Vaals in the south-east. -->
+        <text x="208" y="196" text-anchor="middle"
+              style="font-family:var(--sans);font-size:9px;fill:#b3c0ca;letter-spacing:.2em">BELGIË</text>
+        <text x="262" y="398" text-anchor="middle"
+              style="font-family:var(--sans);font-size:9px;fill:#b3c0ca;letter-spacing:.2em">BELGIË</text>
+        <text x="530" y="290" text-anchor="middle"
+              style="font-family:var(--sans);font-size:9px;fill:#b3c0ca;letter-spacing:.2em">DUITSLAND</text>
+        <text x="412" y="262" text-anchor="middle"
+              style="font-family:var(--sans);font-size:9px;fill:#a4b3bf;letter-spacing:.2em">PARKSTAD</text>
+
+        <!-- Drielandenpunt: where NL, BE and DE meet -->
+        <g>
+          <path d="M456 384 l4 -4 M456 384 l-4 -4 M456 384 l0 6"
+                stroke="#a4b3bf" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <circle cx="456" cy="384" r="2.2" fill="none" stroke="#a4b3bf" stroke-width="1"/>
+          <text x="466" y="398"
+                style="font-family:var(--sans);font-size:8.5px;fill:#b3c0ca;letter-spacing:.08em">Drielandenpunt</text>
+        </g>
+
+        <!-- the shared view at the centre -->
+        <g class="hub">
+          <circle class="halo" cx="352" cy="228" r="40"/>
+          <circle class="halo2" cx="352" cy="228" r="24"/>
+          <circle class="core" cx="352" cy="228" r="9"/>
+          <text x="352" y="194" text-anchor="middle">één dossier</text>
+        </g>
+
+        <!-- care organisations of the region, in true relative positions -->
+        <g class="site">
+          <circle class="ring" cx="322" cy="108" r="7"/><circle class="core" cx="322" cy="108" r="3.2"/>
+          <text x="322" y="86" text-anchor="middle">Zuyderland Sittard-Geleen</text>
+          <text class="n" x="322" y="74" text-anchor="middle">topklinisch ziekenhuis</text>
+        </g>
+        <g class="site">
+          <circle class="ring" cx="424" cy="214" r="7"/><circle class="core" cx="424" cy="214" r="3.2"/>
+          <text x="438" y="210">Zuyderland Heerlen</text>
+          <text class="n" x="438" y="198">topklinisch ziekenhuis</text>
+        </g>
+        <g class="site acc">
+          <circle class="ring" cx="292" cy="306" r="7.5" style="stroke:var(--teal)"/>
+          <circle class="core" cx="292" cy="306" r="3.4"/>
+          <text x="278" y="302" text-anchor="end" style="fill:var(--deep)">Maastricht UMC+</text>
+          <text class="n" x="278" y="290" text-anchor="end">academisch ziekenhuis</text>
+        </g>
+        <g class="site">
+          <circle class="ring" cx="418" cy="322" r="7"/><circle class="core" cx="418" cy="322" r="3.2"/>
+          <text x="432" y="330">Mondriaan</text>
+          <text class="n" x="432" y="342">geestelijke gezondheidszorg</text>
+        </g>
+        <g class="site">
+          <circle class="ring" cx="306" cy="344" r="7"/><circle class="core" cx="306" cy="344" r="3.2"/>
+          <text x="306" y="370" text-anchor="middle">Maastro</text>
+          <text class="n" x="306" y="382" text-anchor="middle">radiotherapie</text>
+        </g>
+
+        <!-- compass rose, small -->
+        <g transform="translate(578,368)">
+          <circle class="compass" cx="0" cy="0" r="17"/>
+          <path class="compass" d="M0 -13 L0 13 M-13 0 L13 0"/>
+          <path d="M0 -13 L3.4 -3.4 L0 0 L-3.4 -3.4 Z" fill="#98b0c0"/>
+          <text class="compass-t" x="0" y="-21" text-anchor="middle">N</text>
+        </g>
+
+      </svg>
+      <figcaption class="map-cap">
+        <span><em>Fig. 1</em> — five care organisations, five record systems, one regional view.</span>
+        <span>Zuid-Limburg, illustrative</span>
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ================= I. THE SITUATION ================= -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <p class="folio" data-n="I">The situation</p>
+    <div class="situation">
+
+      <div>
+        <h2 class="big">Good records, in <em>separate rooms.</em></h2>
+        <p class="stand">
+          Regions rarely have a data problem. They have a boundary problem. The record
+          exists — it is simply on the other side of an organisational line from the
+          clinician who needs it right now.
+        </p>
+      </div>
+
+      <div>
+        <div class="stmt">
+          <span class="mark">i.</span>
+          <h3>The patient is the one who travels</h3>
+          <p>
+            People are born in one town, treated in another, and taken to whichever
+            hospital is nearest when it matters most. Their record does not follow them.
+          </p>
+        </div>
+        <div class="stmt">
+          <span class="mark">ii.</span>
+          <h3>Clinicians rebuild what already exists</h3>
+          <p>
+            Repeat imaging, repeat bloods, medication histories taken verbally from
+            someone unwell. Not because the information is missing from the region —
+            because it is missing from the room.
+          </p>
+        </div>
+        <div class="stmt">
+          <span class="mark">iii.</span>
+          <h3>The usual remedy asks too much</h3>
+          <p>
+            Centralising every record into one store means years of migration, a
+            governance argument with every hospital, and a single point of failure the
+            region has to defend. Most programmes stall long before that.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= II. THE JOURNEY ================= -->
+<section class="sec tint" id="how">
+  <div class="wrap">
+    <p class="folio" data-n="II">What changes</p>
+
+    <div class="situation" style="grid-template-columns:minmax(0,1fr) minmax(0,.86fr);gap:64px;align-items:center">
+      <div>
+        <h2 class="big">A patient arrives <em>somewhere new.</em></h2>
+        <p class="stand">
+          The same afternoon, in the same region, with and without a shared view.
+          Nothing about the hospitals changes — only what the clinician can see.
+        </p>
+      </div>
+      <blockquote class="pull">
+        “She was treated forty minutes up the road last winter. We had none of it, and
+        she was in no state to tell us.”
+        <span class="pull-by">The problem a regional record actually solves —<br>and the one clinicians describe first.</span>
+      </blockquote>
+    </div>
+
+    <div class="journey">
+      <div class="leg on">
+        <div class="pip">1</div>
+        <span class="where">Zuyderland Heerlen</span>
+        <h4>She arrives</h4>
+        <p>Admitted acutely on the far side of the region. Known to Zuid-Limburg — but not to this hospital.</p>
+      </div>
+      <div class="leg">
+        <div class="pip">2</div>
+        <span class="where">Across the region</span>
+        <h4>Her record is found</h4>
+        <p>The region's other care organisations are asked, at once, whether they hold anything for her. Two do.</p>
+      </div>
+      <div class="leg">
+        <div class="pip">3</div>
+        <span class="where">In the room</span>
+        <h4>It arrives as one history</h4>
+        <p>Not five logins and five portals. One chronological record, with each entry showing where it came from.</p>
+      </div>
+      <div class="leg">
+        <div class="pip">4</div>
+        <span class="where">Back where it belongs</span>
+        <h4>Today's care is written home</h4>
+        <p>What Heerlen records stays Zuyderland's, held in Zuyderland's own system — and is visible to the region tomorrow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= III. HOW IT DIFFERS ================= -->
+<section class="sec" id="differs">
+  <div class="wrap">
+    <p class="folio" data-n="III">How it differs</p>
+
+    <!-- row 1 -->
+    <div class="row">
+      <div>
+        <h3>Nothing moves house.</h3>
+        <p>
+          A regional record usually means a migration: every hospital lifts its history
+          into somebody else's database and hopes the mapping held. Unio asks instead.
+          The records stay exactly where they are, in the systems that already hold them.
+        </p>
+        <p class="under">
+          No data warehouse to build, no duplicate of the region's clinical history to
+          secure, and no second copy that can quietly fall out of date.
+        </p>
+      </div>
+      <figure class="fig" style="margin:0">
+        <svg viewBox="0 0 520 300" role="img" aria-label="Central copy versus asking each hospital in place">
+
+          <!-- LEFT: the usual approach -->
+          <text class="dg-t-s" x="8" y="18" style="letter-spacing:.14em">THE USUAL APPROACH</text>
+          <g>
+            <rect class="dg-fill" x="8" y="34" width="58" height="34" rx="2"/>
+            <rect class="dg-fill" x="8" y="82" width="58" height="34" rx="2"/>
+            <rect class="dg-fill" x="8" y="130" width="58" height="34" rx="2"/>
+            <text class="dg-t-s" x="37" y="55" text-anchor="middle">hospital</text>
+            <text class="dg-t-s" x="37" y="103" text-anchor="middle">hospital</text>
+            <text class="dg-t-s" x="37" y="151" text-anchor="middle">hospital</text>
+
+            <path class="dg-ar" d="M70 51 L124 92" marker-end="url(#ah)"/>
+            <path class="dg-ar" d="M70 99 L124 99" marker-end="url(#ah)"/>
+            <path class="dg-ar" d="M70 147 L124 106" marker-end="url(#ah)"/>
+
+            <rect class="dg-fill" x="128" y="66" width="84" height="66" rx="2" style="stroke-dasharray:4 3"/>
+            <text class="dg-t-b" x="170" y="94" text-anchor="middle">central</text>
+            <text class="dg-t-b" x="170" y="109" text-anchor="middle">copy</text>
+
+            <!-- the cost marks -->
+            <g class="dg-x">
+              <path d="M150 152 L162 164 M162 152 L150 164"/>
+            </g>
+            <text class="dg-t-s" x="170" y="182" text-anchor="middle">years of migration</text>
+            <text class="dg-t-s" x="170" y="196" text-anchor="middle">a second copy to defend</text>
+          </g>
+
+          <!-- divider -->
+          <line x1="248" y1="24" x2="248" y2="250" stroke="#ddd8cc" stroke-width="1"/>
+
+          <!-- RIGHT: unio -->
+          <text class="dg-t-s" x="272" y="18" style="letter-spacing:.14em;fill:#128a8a">WITH UNIO</text>
+          <g>
+            <rect class="dg-box" x="272" y="34" width="58" height="34" rx="2"/>
+            <rect class="dg-box" x="272" y="82" width="58" height="34" rx="2"/>
+            <rect class="dg-box" x="272" y="130" width="58" height="34" rx="2"/>
+            <text class="dg-t-s" x="301" y="55" text-anchor="middle">hospital</text>
+            <text class="dg-t-s" x="301" y="103" text-anchor="middle">hospital</text>
+            <text class="dg-t-s" x="301" y="151" text-anchor="middle">hospital</text>
+
+            <!-- asks, and answers come back -->
+            <path class="dg-ar-a" d="M392 92 L338 55" marker-end="url(#aht)"/>
+            <path class="dg-ar-a" d="M392 99 L338 99" marker-end="url(#aht)"/>
+            <path class="dg-ar-a" d="M392 106 L338 145" marker-end="url(#aht)"/>
+
+            <rect class="dg-box-a" x="396" y="70" width="72" height="58" rx="2"/>
+            <text class="dg-t-b" x="432" y="94" text-anchor="middle" style="fill:#128a8a">Unio</text>
+            <text class="dg-t-s" x="432" y="110" text-anchor="middle">asks</text>
+
+            <text class="dg-t-s" x="370" y="182" text-anchor="middle">records stay in place</text>
+            <text class="dg-t-s" x="370" y="196" text-anchor="middle">nothing to migrate</text>
+          </g>
+
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+              <path d="M0 1 L8 5 L0 9 z" fill="#3a5878"/>
+            </marker>
+            <marker id="aht" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+              <path d="M0 1 L8 5 L0 9 z" fill="#128a8a"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption class="fig-cap">Fig. 2 — a copy of the region, versus a question asked of it.</figcaption>
+      </figure>
+    </div>
+
+    <!-- row 2 -->
+    <div class="row flip">
+      <div>
+        <h3>One history, not five portals.</h3>
+        <p>
+          Answers come back from several organisations at different speeds and in
+          different orders. Unio waits for them, puts them in one chronological order,
+          removes the duplicates, and hands over a single history.
+        </p>
+        <p>
+          If one of them is unreachable, the clinician is told so plainly — the record
+          says what it is missing rather than pretending to be complete.
+        </p>
+        <p class="under">
+          A partial answer that admits it is partial is safe. One that looks whole is not.
+        </p>
+      </div>
+      <figure class="fig" style="margin:0">
+        <svg viewBox="0 0 520 300" role="img" aria-label="Answers from several hospitals merged into one timeline">
+
+          <!-- incoming, ragged -->
+          <text class="dg-t-s" x="8" y="18" style="letter-spacing:.14em">FOUR ANSWERS</text>
+          <g>
+            <rect class="dg-box" x="8" y="34" width="164" height="24" rx="2"/>
+            <circle cx="22" cy="46" r="3.6" fill="#128a8a"/>
+            <text class="dg-t" x="34" y="50">Maastricht UMC+ · 3 entries</text>
+
+            <rect class="dg-box" x="8" y="66" width="164" height="24" rx="2"/>
+            <circle cx="22" cy="78" r="3.6" fill="#3a5878"/>
+            <text class="dg-t" x="34" y="82">Zuyderland · 5 entries</text>
+
+            <rect class="dg-box" x="8" y="98" width="164" height="24" rx="2"/>
+            <circle cx="22" cy="110" r="3.6" fill="#1a6272"/>
+            <text class="dg-t" x="34" y="114">Maastro · 1 entry</text>
+
+            <rect class="dg-box" x="8" y="130" width="164" height="24" rx="2" style="stroke-dasharray:4 3"/>
+            <circle cx="22" cy="142" r="3.6" fill="#c78f14"/>
+            <text class="dg-t-s" x="34" y="146">Mondriaan · niet bereikbaar</text>
+          </g>
+
+          <!-- funnel -->
+          <path class="dg-ar-a" d="M178 46 C208 46, 208 96, 236 96"/>
+          <path class="dg-ar-a" d="M178 78 C208 78, 212 94, 236 96"/>
+          <path class="dg-ar-a" d="M178 110 C208 110, 212 98, 236 96"/>
+          <path class="dg-ar" d="M178 142 C206 142, 214 104, 236 98" style="stroke-dasharray:3 3;opacity:.45"/>
+
+          <!-- merged timeline -->
+          <text class="dg-t-s" x="256" y="18" style="letter-spacing:.14em;fill:#128a8a">ONE HISTORY</text>
+          <line x1="266" y1="34" x2="266" y2="214" stroke="#128a8a" stroke-width="1.4"/>
+
+          <g>
+            <circle cx="266" cy="46" r="4" fill="#3a5878"/>
+            <text class="dg-t" x="280" y="43">14 mrt · ontslagbrief</text>
+            <text class="dg-t-s" x="280" y="56">Zuyderland Heerlen</text>
+
+            <circle cx="266" cy="88" r="4" fill="#128a8a"/>
+            <text class="dg-t" x="280" y="85">2 feb · medicatiebeoordeling</text>
+            <text class="dg-t-s" x="280" y="98">Maastricht UMC+</text>
+
+            <circle cx="266" cy="130" r="4" fill="#1a6272"/>
+            <text class="dg-t" x="280" y="127">19 jan · bestralingsverslag</text>
+            <text class="dg-t-s" x="280" y="140">Maastro</text>
+
+            <circle cx="266" cy="172" r="4" fill="#3a5878"/>
+            <text class="dg-t" x="280" y="169">6 dec · polikliniekbrief</text>
+            <text class="dg-t-s" x="280" y="182">Zuyderland Sittard-Geleen</text>
+          </g>
+
+          <!-- honest gap -->
+          <rect x="256" y="200" width="252" height="34" rx="2" fill="#faf4e4" stroke="#e0c88a" stroke-width="1"/>
+          <circle cx="270" cy="217" r="3.6" fill="#c78f14"/>
+          <text class="dg-t-s" x="282" y="214" style="fill:#7a5f12">Mondriaan could not be reached.</text>
+          <text class="dg-t-s" x="282" y="227" style="fill:#7a5f12">This history may be incomplete.</text>
+
+        </svg>
+        <figcaption class="fig-cap">Fig. 3 — merged in time order, with the gap declared.</figcaption>
+      </figure>
+    </div>
+
+    <!-- row 3 -->
+    <div class="row">
+      <div>
+        <h3>Ask by patient, not by hospital.</h3>
+        <p>
+          A clinician in Heerlen should not have to know that a patient was once treated
+          in Maastricht in order to find the Maastricht record. They ask about the person;
+          the region works out who holds what.
+        </p>
+        <p class="under">
+          Identity is matched once, centrally and carefully — so a hospital is never
+          asked to search for someone it has no business knowing about.
+        </p>
+      </div>
+      <figure class="fig" style="margin:0">
+        <svg viewBox="0 0 520 260" role="img" aria-label="One question about a person, resolved to the hospitals that hold records">
+
+          <!-- the question -->
+          <rect class="dg-box-a" x="8" y="96" width="152" height="54" rx="2"/>
+          <text class="dg-t-b" x="84" y="118" text-anchor="middle">“What do we know</text>
+          <text class="dg-t-b" x="84" y="134" text-anchor="middle">about this patient?”</text>
+
+          <path class="dg-ar-a" d="M164 123 L216 123" marker-end="url(#aht2)"/>
+
+          <!-- resolution -->
+          <circle cx="252" cy="123" r="30" fill="#fff" stroke="#128a8a" stroke-width="1.6"/>
+          <text class="dg-t-s" x="252" y="119" text-anchor="middle" style="fill:#128a8a">identity</text>
+          <text class="dg-t-s" x="252" y="132" text-anchor="middle" style="fill:#128a8a">matched</text>
+
+          <!-- fan to holders / non-holders -->
+          <path class="dg-ar-a" d="M284 108 C320 92, 336 66, 363 58" marker-end="url(#aht2)"/>
+          <path class="dg-ar-a" d="M286 123 L363 123" marker-end="url(#aht2)"/>
+          <path class="dg-ar-a" d="M284 138 C320 154, 336 180, 363 188" marker-end="url(#aht2)" style="opacity:.4"/>
+
+          <g>
+            <rect class="dg-box-a" x="368" y="40" width="148" height="36" rx="2"/>
+            <text class="dg-t-b" x="380" y="56">Maastricht UMC+</text>
+            <text class="dg-t-s" x="380" y="69">holds a record</text>
+
+            <rect class="dg-box-a" x="368" y="105" width="148" height="36" rx="2"/>
+            <text class="dg-t-b" x="380" y="121">Zuyderland</text>
+            <text class="dg-t-s" x="380" y="134">holds a record</text>
+
+            <rect class="dg-box" x="368" y="170" width="148" height="36" rx="2" style="stroke-dasharray:4 3"/>
+            <text class="dg-t" x="380" y="186" style="fill:#7c8b99">Maastro</text>
+            <text class="dg-t-s" x="380" y="199">nothing held · not asked</text>
+          </g>
+
+          <defs>
+            <marker id="aht2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+              <path d="M0 1 L8 5 L0 9 z" fill="#128a8a"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption class="fig-cap">Fig. 4 — one question about a person, not five searches by organisation.</figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= IV. SOVEREIGNTY BAND ================= -->
+<section class="band" id="regions">
+  <div class="wrap">
+    <p class="folio" data-n="IV">The bargain</p>
+    <h2 class="big">Nobody has to <em>give anything up.</em></h2>
+    <p class="stand">
+      A regional record only gets built if every hospital is willing to join it. That
+      means the terms have to be acceptable to the most cautious member, not the most
+      enthusiastic one.
+    </p>
+
+    <div class="tenets">
+      <div class="tenet">
+        <span class="no">i.</span>
+        <h4>Each hospital still owns its record</h4>
+        <p>
+          Data stays in the system that created it, under that organisation's control.
+          Joining the region is not a transfer of custody — and a hospital that leaves
+          takes nothing away from anyone else.
+        </p>
+      </div>
+      <div class="tenet">
+        <span class="no">ii.</span>
+        <h4>A record is only written by its owner</h4>
+        <p>
+          Care recorded at one hospital is written there and nowhere else. There is never
+          a second version of the truth in another building, and never a question about
+          which copy is current.
+        </p>
+      </div>
+      <div class="tenet">
+        <span class="no">iii.</span>
+        <h4>Who was asked, and what was shown</h4>
+        <p>
+          Every request across the region is recorded: who asked, about whom, which
+          hospitals answered. The region can show its regulator exactly how the shared
+          record has been used.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= V. FOR THE HOSPITALS ================= -->
+<section class="sec" id="hospitals">
+  <div class="wrap">
+    <p class="folio" data-n="V">For the hospitals joining</p>
+    <div class="cio">
+
+      <div>
+        <h2 class="big">What it asks of <em>your systems.</em></h2>
+        <p class="stand">
+          The questions a hospital IT director asks in the first meeting, answered in the
+          order they usually come up.
+        </p>
+      </div>
+
+      <div class="qa">
+        <div class="qa-item">
+          <p class="q">Do we have to replace or migrate our CDR?</p>
+          <p class="a">
+            <b>No.</b> You keep the system you have. Unio sits in front of the region and
+            speaks to your CDR in the standard openEHR way it already supports — there is
+            nothing to install inside your hospital.
+          </p>
+        </div>
+        <div class="qa-item">
+          <p class="q">Do our own applications have to change?</p>
+          <p class="a">
+            <b>No.</b> Anything already built against a standard openEHR system works
+            against the region unchanged. Nothing has to be rewritten to become
+            “federation-aware”.
+          </p>
+        </div>
+        <div class="qa-item">
+          <p class="q">What load does this put on us?</p>
+          <p class="a">
+            One ordinary query per request, and only when a patient is actually being
+            looked up. There is no bulk extract, no nightly export, and no continuous
+            replication running against your database.
+          </p>
+        </div>
+        <div class="qa-item">
+          <p class="q">What if we are slow or offline one day?</p>
+          <p class="a">
+            The region carries on without you and says so. Your outage never becomes
+            everyone's outage — and the shared record is honest about what it could not
+            reach.
+          </p>
+        </div>
+        <div class="qa-item">
+          <p class="q">Can we leave?</p>
+          <p class="a">
+            <b>Yes.</b> Because nothing of yours was ever copied elsewhere, leaving is a
+            configuration change. Your records are already, and only, where they always
+            were.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="close" id="briefing">
+  <div class="wrap">
+    <h2>Your region already has the record. <em>Let it be read.</em></h2>
+    <p>
+      We will walk through your region's hospitals, what each one runs today, and what a
+      shared record would look like in practice — before anyone commits to a programme.
+    </p>
+    <div class="btns">
+      <a class="btn btn-lg" href="mailto:info@syntaric.com?subject=Unio%20briefing">Arrange a briefing</a>
+      <a class="btn btn-out btn-lg" href="https://github.com/syntaric/unio" rel="noopener">Read the documentation</a>
+    </div>
+    <p class="spec">
+      Unio is built by SYNTARIC on the openEHR standard, and implements the openEHR
+      federation specification in full on the gateway side.
+    </p>
+  </div>
+</section>
+
+<!-- ================= COLOPHON ================= -->
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="col-grid">
+      <div class="col-brand">
+        <img src="etc/unio-logo.png" alt="Unio">
+        <p>A shared regional health record, built without moving anybody's data.</p>
+      </div>
+      <div class="col">
+        <h5>Why Unio</h5>
+        <ul><li><a href="#why">The regional case</a></li><li><a href="#how">How it works</a></li><li><a href="#regions">Data ownership</a></li><li><a href="#regions">Audit &amp; oversight</a></li></ul>
+      </div>
+      <div class="col">
+        <h5>For hospitals</h5>
+        <ul><li><a href="#hospitals">Joining a region</a></li><li><a href="#hospitals">What we ask of you</a></li><li><a href="https://github.com/syntaric/unio" rel="noopener">Documentation</a></li><li><a href="mailto:info@syntaric.com">Support</a></li></ul>
+      </div>
+      <div class="col">
+        <h5>SYNTARIC</h5>
+        <ul><li><a href="https://syntaric.com/">About</a></li><li><a href="mailto:info@syntaric.com">Contact</a></li><li><a href="mailto:info@syntaric.com">Security</a></li></ul>
+      </div>
+    </div>
+    <div class="col-bot">
+      <span>© 2026 SYNTARIC</span>
+      <span>Built on openEHR</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

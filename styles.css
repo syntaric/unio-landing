@@ -1,0 +1,346 @@
+/* ===========================================================================
+   Unio landing page — editorial / cartographic direction.
+   The region is the hero image, not a UI panel. Palette is the logo's own,
+   used as map ink rather than as SaaS chrome.
+   =========================================================================== */
+:root{
+  /* logo palette */
+  --navy:#0c2842;
+  --teal:#128a8a;
+  --teal-lt:#19b3b3;
+  --deep:#1a6272;
+  --slate:#3a5878;
+  --mist:#98b0c0;
+
+  /* paper — warm, so it reads as print rather than dashboard */
+  --paper:#fbfaf7;
+  --paper-2:#f4f2ec;
+  --paper-3:#ebe8e0;
+  --rule:#ddd8cc;
+  --rule-soft:#e8e4da;
+
+  --ink:#14202c;
+  --ink-2:#43566a;
+  --ink-3:#7c8b99;
+
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+
+  --maxw:1180px;
+  --gut:44px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* keyboard focus must stay visible against warm paper and navy alike */
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+.band :focus-visible,.cta :focus-visible{outline-color:var(--teal-lt)}
+
+/* skip link for keyboard and screen-reader users */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--navy);color:#fff;padding:12px 20px;font-size:15px;
+}
+.skip:focus{left:0}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* folio marks — small numbered section labels, like a report */
+.folio{
+  font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);display:flex;align-items:center;gap:12px;margin:0 0 22px;
+}
+.folio::before{
+  content:attr(data-n);font-family:var(--serif);font-size:13px;letter-spacing:0;
+  color:var(--teal);border:1px solid var(--rule);border-radius:50%;
+  width:26px;height:26px;display:grid;place-items:center;flex-shrink:0;
+}
+
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.015em}
+h2.big{font-size:44px;line-height:1.14;margin:0 0 20px;max-width:16ch}
+h2.big em{font-style:italic;color:var(--teal)}
+p.stand{font-size:19px;line-height:1.62;color:var(--ink-2);margin:0;max-width:54ch}
+
+/* ============ MASTHEAD ============ */
+.masthead{border-bottom:1px solid var(--rule);background:var(--paper)}
+.mh{display:flex;align-items:center;gap:40px;height:76px}
+.mh img{height:29px;display:block}
+.mh nav{display:flex;gap:28px;font-size:14.5px;color:var(--ink-2);margin-left:8px}
+.mh nav a:hover{color:var(--teal)}
+.mh .right{margin-left:auto;display:flex;align-items:center;gap:22px}
+.mh .right .ln{font-size:14.5px;color:var(--ink-2)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);
+  font-size:15px;font-weight:500;padding:11px 22px;cursor:pointer;white-space:nowrap;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+  border:1px solid var(--navy);background:var(--navy);color:#fff;border-radius:2px;
+}
+.btn:hover{background:var(--deep);border-color:var(--deep)}
+.btn-out{background:transparent;color:var(--navy)}
+.btn-out:hover{background:var(--paper-3);color:var(--navy);border-color:var(--navy)}
+.btn-lg{font-size:16px;padding:13px 28px}
+.btn-pale{border-color:rgba(255,255,255,.42);background:transparent;color:#fff}
+.btn-pale:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-white{background:#fff;border-color:#fff;color:var(--navy)}
+.btn-white:hover{background:var(--paper-2);border-color:var(--paper-2)}
+
+/* ============ HERO — the region is the image ============ */
+.hero{border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+.hero-inner{
+  display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:56px;align-items:center;padding:64px 0 58px;
+}
+.kicker{
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+  margin:0 0 26px;font-weight:500;
+}
+h1{
+  font-size:60px;line-height:1.04;margin:0 0 26px;letter-spacing:-.028em;
+}
+h1 .l2{display:block;font-style:italic;color:var(--teal)}
+.lede{font-size:20px;line-height:1.6;color:var(--ink-2);margin:0 0 34px;max-width:44ch}
+.hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-foot{
+  margin-top:36px;padding-top:22px;border-top:1px solid var(--rule);
+  font-size:14.5px;color:var(--ink-3);max-width:44ch;line-height:1.6;
+}
+
+/* the map itself */
+.mapfig{position:relative}
+.mapfig svg{width:100%;height:auto;display:block;overflow:visible}
+.map-cap{
+  display:flex;justify-content:space-between;gap:18px;margin-top:16px;
+  font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--rule-soft);padding-top:11px;
+}
+.map-cap em{font-style:italic;color:var(--ink-2)}
+
+/* map ink */
+.terr{fill:#f0eee7;stroke:var(--mist);stroke-width:1.1}
+.terr-2{fill:#e2ded1;stroke:none}
+.riv{fill:none;stroke:#b9cddb;stroke-width:2.4;stroke-linecap:round}
+.thread{fill:none;stroke:var(--teal);stroke-width:1.7;stroke-linecap:round;stroke-dasharray:4 5;opacity:.85}
+.thread-2{fill:none;stroke:var(--slate);stroke-width:1.2;stroke-linecap:round;stroke-dasharray:2 5;opacity:.5}
+.site circle.ring{fill:#fff;stroke:var(--navy);stroke-width:1.6}
+.site circle.core{fill:var(--navy)}
+.site.acc circle.core{fill:var(--teal)}
+.site text{font-family:var(--sans);font-size:11px;fill:var(--ink-2);letter-spacing:.02em}
+.site text.n{font-size:9.5px;fill:var(--ink-3)}
+.hub circle.halo{fill:var(--teal);opacity:.09}
+.hub circle.halo2{fill:var(--teal);opacity:.13}
+.hub circle.core{fill:var(--navy);stroke:#fff;stroke-width:2.4}
+.hub text{font-family:var(--serif);font-size:14px;fill:var(--navy);font-style:italic}
+.gridline{stroke:var(--rule);stroke-width:.6;opacity:.55}
+.compass{fill:none;stroke:var(--mist);stroke-width:1}
+.compass-t{font-family:var(--sans);font-size:9px;fill:var(--ink-3);letter-spacing:.1em}
+
+/* ============ RULE-DIVIDED SECTIONS ============ */
+.sec{padding:88px 0;border-bottom:1px solid var(--rule)}
+.sec.tint{background:var(--paper-2)}
+
+/* ---- the situation: three plain statements, no cards ---- */
+.situation{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1fr);gap:60px}
+.stmt{padding:26px 0;border-top:1px solid var(--rule)}
+.stmt:last-child{border-bottom:1px solid var(--rule)}
+.stmt h3{font-size:22px;margin:0 0 9px;line-height:1.3}
+.stmt p{margin:0;color:var(--ink-2);font-size:16.5px;line-height:1.62;max-width:56ch}
+.stmt .mark{
+  font-family:var(--serif);font-style:italic;font-size:15px;color:var(--teal);
+  display:block;margin-bottom:7px;
+}
+
+/* ---- pull quote ---- */
+.pull{
+  font-family:var(--serif);font-size:32px;line-height:1.35;color:var(--navy);
+  font-style:italic;margin:0;padding:0 0 0 30px;border-left:2px solid var(--teal);
+  max-width:26ch;
+}
+.pull-by{
+  font-family:var(--sans);font-style:normal;font-size:13.5px;color:var(--ink-3);
+  display:block;margin-top:20px;letter-spacing:.02em;line-height:1.55;
+}
+
+/* ---- the journey: horizontal timeline, not boxes ---- */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative}
+.journey::before{
+  content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:var(--rule);
+}
+.leg{padding:0 26px 0 0;position:relative}
+.leg .pip{
+  width:23px;height:23px;border-radius:50%;background:var(--paper);
+  border:1px solid var(--navy);display:grid;place-items:center;position:relative;z-index:1;
+  font-family:var(--serif);font-size:12px;color:var(--navy);margin-bottom:20px;
+}
+.leg.on .pip{background:var(--teal);border-color:var(--teal);color:#fff}
+.leg h4{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 8px;line-height:1.3}
+.leg p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.58}
+.leg .where{
+  display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:9px;
+}
+
+/* ---- value: alternating full-bleed rows, image-led ---- */
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.row + .row{margin-top:78px;padding-top:78px;border-top:1px solid var(--rule)}
+.row.flip .fig{order:-1}
+.row h3{font-size:30px;line-height:1.2;margin:0 0 16px;max-width:17ch}
+.row p{color:var(--ink-2);font-size:17px;line-height:1.64;margin:0 0 18px;max-width:50ch}
+.row .under{
+  font-size:14.5px;color:var(--ink-3);border-top:1px solid var(--rule-soft);
+  padding-top:14px;margin:0;max-width:46ch;
+}
+.fig{position:relative}
+.fig svg{width:100%;height:auto;display:block;overflow:visible}
+.fig-cap{font-size:12.5px;color:var(--ink-3);margin-top:13px;font-style:italic}
+
+/* small diagram ink */
+.dg-box{fill:#fff;stroke:var(--rule);stroke-width:1.2}
+.dg-box-a{fill:#fff;stroke:var(--teal);stroke-width:1.6}
+.dg-fill{fill:var(--paper-2);stroke:var(--rule);stroke-width:1.2}
+.dg-t{font-family:var(--sans);font-size:11.5px;fill:var(--ink-2)}
+.dg-t-s{font-family:var(--sans);font-size:10px;fill:var(--ink-3)}
+.dg-t-b{font-family:var(--sans);font-size:11.5px;fill:var(--navy);font-weight:500}
+.dg-ar{fill:none;stroke:var(--slate);stroke-width:1.3;stroke-linecap:round}
+.dg-ar-a{fill:none;stroke:var(--teal);stroke-width:1.7;stroke-linecap:round}
+.dg-x{fill:none;stroke:#c0554d;stroke-width:1.6;stroke-linecap:round;opacity:.8}
+.dg-hatch{fill:var(--paper-3)}
+
+/* ---- sovereignty band: navy, but typographic not dashboard-y ---- */
+.band{
+  background:var(--navy);color:#eef4f7;padding:86px 0;border-bottom:1px solid var(--navy);
+  position:relative;overflow:hidden;
+}
+.band::before{
+  content:"";position:absolute;inset:0;opacity:.16;pointer-events:none;
+  background-image:linear-gradient(rgba(152,176,192,.22) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(152,176,192,.22) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+.band .wrap{position:relative;z-index:1}
+.band .folio{color:rgba(238,244,247,.6)}
+.band .folio::before{color:var(--teal-lt);border-color:rgba(238,244,247,.28)}
+.band h2.big{color:#fff}
+.band h2.big em{color:var(--teal-lt)}
+.band p.stand{color:rgba(238,244,247,.76)}
+.tenets{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px}
+.tenet{padding:0 34px;border-left:1px solid rgba(238,244,247,.18)}
+.tenet:first-child{padding-left:0;border-left:0}
+.tenet h4{
+  font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 11px;color:#fff;line-height:1.3;
+}
+.tenet p{margin:0;font-size:15.5px;line-height:1.62;color:rgba(238,244,247,.72)}
+.tenet .no{
+  font-family:var(--serif);font-style:italic;font-size:14px;color:var(--teal-lt);
+  display:block;margin-bottom:13px;
+}
+
+/* ---- CIO section: reassurance, plainly set ---- */
+.cio{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:60px;align-items:start}
+.qa{border-top:1px solid var(--rule)}
+.qa-item{padding:22px 0;border-bottom:1px solid var(--rule)}
+.qa-item .q{
+  font-family:var(--serif);font-size:19px;color:var(--navy);margin:0 0 8px;line-height:1.35;
+}
+.qa-item .a{margin:0;font-size:16px;color:var(--ink-2);line-height:1.62;max-width:62ch}
+.qa-item .a b{color:var(--ink);font-weight:600}
+
+/* ---- closing ---- */
+.close{
+  background:var(--paper-2);padding:92px 0;text-align:center;border-bottom:1px solid var(--rule);
+}
+.close h2{font-size:42px;line-height:1.16;margin:0 auto 20px;max-width:18ch}
+.close h2 em{font-style:italic;color:var(--teal)}
+.close p{font-size:18px;color:var(--ink-2);margin:0 auto 34px;max-width:50ch}
+.close .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.close .spec{
+  margin:38px auto 0;font-size:13.5px;color:var(--ink-3);max-width:56ch;line-height:1.6;
+  padding-top:22px;border-top:1px solid var(--rule);
+}
+
+/* ---- colophon footer ---- */
+footer{padding:56px 0 36px;background:var(--paper)}
+.col-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.col-brand img{height:27px;display:block;margin-bottom:15px}
+.col-brand p{font-size:14.5px;color:var(--ink-3);margin:0;max-width:30ch;line-height:1.62}
+.col h5{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 14px;font-weight:500;font-family:var(--sans);
+}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{font-size:15px;color:var(--ink-2);padding:5px 0}
+.col li a:hover{color:var(--teal)}
+.col-bot{
+  border-top:1px solid var(--rule);padding-top:22px;display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-3);
+}
+
+@media (max-width:1040px){
+  .hero-inner,.situation,.row,.cio{grid-template-columns:1fr;gap:44px}
+  .row.flip .fig{order:0}
+  .journey{grid-template-columns:1fr 1fr;gap:34px 0}
+  .journey::before{display:none}
+  .tenets{grid-template-columns:1fr}
+  .tenet{padding:26px 0;border-left:0;border-top:1px solid rgba(238,244,247,.18)}
+  .tenet:first-child{padding-top:0;border-top:0}
+  .col-grid{grid-template-columns:1fr 1fr}
+  h1{font-size:44px}
+  h2.big{font-size:34px}
+}
+
+/* ---- tablet / small laptop: masthead nav would crowd the logo ---- */
+@media (max-width:860px){
+  :root{--gut:28px}
+  .mh{height:auto;padding:16px 0;flex-wrap:wrap;gap:14px 24px}
+  .mh nav{order:3;width:100%;margin-left:0;gap:20px;flex-wrap:wrap;font-size:14px}
+  .mh .right{margin-left:auto}
+  .sec,.band,.close{padding:60px 0}
+  .row + .row{margin-top:52px;padding-top:52px}
+}
+
+/* ---- phone ---- */
+@media (max-width:600px){
+  :root{--gut:20px}
+  body{font-size:16px}
+  h1{font-size:34px}
+  h2.big,.close h2{font-size:28px;max-width:none}
+  .lede{font-size:17px}
+  p.stand,.row p{font-size:16px}
+  .pull{font-size:23px;padding-left:20px;max-width:none}
+  .journey{grid-template-columns:1fr;gap:0}
+  .leg{padding:20px 0;border-top:1px solid var(--rule)}
+  .leg .pip{margin-bottom:14px}
+  /* the figures carry fine labels; below ~440px they shrink past legibility,
+     so scroll them instead of scaling them down */
+  .mapfig,.fig{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .mapfig svg,.fig svg{min-width:430px}
+  .map-cap,.fig-cap{position:sticky;left:0}
+  .hero-cta,.close .btns{flex-direction:column;align-items:stretch}
+  .hero-cta .btn,.close .btns .btn{justify-content:center}
+  .mh .right .ln{display:none}
+  .col-grid{grid-template-columns:1fr;gap:28px}
+  .map-cap,.col-bot{flex-direction:column;gap:6px}
+  .qa-item .q{font-size:17.5px}
+}
+
+/* ---- print: it is a report, so let it print like one ---- */
+@media print{
+  :root{--paper:#fff;--paper-2:#fff;--paper-3:#fff}
+  body{font-size:11pt;color:#000}
+  .masthead,.hero-cta,.close .btns,.skip{display:none}
+  .band{background:#fff;color:#000;border:1px solid #999}
+  .band h2.big,.band .tenet h4{color:#000}
+  .band p.stand,.band .tenet p{color:#222}
+  .band::before,.cta::after{display:none}
+  .sec,.band,.close{padding:24pt 0;break-inside:avoid}
+  .row,.leg,.qa-item,.stmt,.tenet{break-inside:avoid}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+}
