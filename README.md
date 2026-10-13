@@ -89,20 +89,6 @@ there and copy the PNG across.
 
 ---
 
-## Before going live
-
-- [ ] **Replace the Google Analytics ID.** `G-XXXXXXXXXX` in `index.html`
-      (two places) is a placeholder.
-- [ ] **Confirm the documentation URL.** Currently points at
-      `https://github.com/syntaric/unio`; update if docs are hosted elsewhere.
-- [ ] **Check the clinician pull-quote.** Currently framed as a paraphrase of
-      what clinicians describe. If a real, attributable quote exists, use it.
-- [ ] **Verify the Zuid-Limburg framing** with RSO Zuid-Limburg before public
-      launch — the organisations named are real, so treat this as illustrative
-      unless they have agreed to be cited.
-- [ ] Point the `unio.syntaric.com` DNS CNAME at GitHub Pages and enable
-      HTTPS in repository settings.
-
 ## Maintenance
 
 - Update `<lastmod>` in `sitemap.xml` on material changes.
