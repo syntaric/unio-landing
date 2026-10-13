@@ -17,7 +17,8 @@ favicon.ico
 favicon-96x96.png
 apple-touch-icon.png
 etc/                Logos (unio-logo.png, unio-mark.png).
-images/             Manifest icons; any future diagrams.
+images/             Manifest icons.
+images/console/     Operator-console captures for section V (Fig. 5–7), 2x PNG.
 ```
 
 No build step and no dependencies — open `index.html` or serve the folder.
@@ -32,7 +33,7 @@ python3 -m http.server 8000    # then visit http://localhost:8000
 
 **Direction: editorial / cartographic.** The page reads as a health-policy
 publication rather than a SaaS site — warm paper, serif headlines, numbered
-folios (I–V), hairline rules instead of cards, and numbered figures with
+folios (I–VI), hairline rules instead of cards, and numbered figures with
 captions.
 
 **Palette** is sampled from the logo and used as map ink:
@@ -72,7 +73,19 @@ second**. Two constraints worth preserving when editing:
    no AQL, no HTTP status codes. Technical guarantees appear as consequences
    ("a partial answer that admits it is partial is safe"), never as clauses.
 2. **Figures carry the argument.** Four numbered SVG figures do the explaining;
-   prose stays short around them.
+   prose stays short around them. Section V adds three photographic figures
+   (Fig. 5–7): console captures framed as plates, not product chrome.
+3. **Plain sentences.** No lists of three for rhythm, no "not X but Y", no
+   clauses hung off a dash. Short sentences are welcome.
+
+### The console captures
+
+`images/console/` holds 2x screenshots of the operator console, taken from
+the demo stack with the member names replaced by fictional regional ones
+(Regionaal Ziekenhuis Noord, Kliniek Zuid). Nothing in them is a real
+organisation or a real patient. The capture tooling lives next to the design
+mockup in the main UNIO repository, not here; to refresh a shot, re-run it
+there and copy the PNG across.
 
 ---
 

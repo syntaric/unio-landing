@@ -202,6 +202,70 @@ h1 .l2{display:block;font-style:italic;color:var(--teal)}
 .fig svg{width:100%;height:auto;display:block;overflow:visible}
 .fig-cap{font-size:12.5px;color:var(--ink-3);margin-top:13px;font-style:italic}
 
+/* ---- the operator's view: console shots, framed as plates not panels ---- */
+.console .stand{margin-bottom:56px}
+.plate{
+  position:relative;padding:48px 56px 40px;margin:0;
+  background:var(--paper-2);border:1px solid var(--rule);
+}
+.plate::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(152,176,192,.18) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(152,176,192,.18) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+.slab{
+  position:absolute;inset:48px 36px 60px 76px;background:var(--paper-3);
+  transform:translate(18px,18px);pointer-events:none;
+}
+.stage{position:relative;z-index:1}
+.plate .fig-cap{position:relative;z-index:1;margin-top:44px;padding-left:2px}
+.win{
+  position:relative;background:#0d1b2a;border-radius:6px;overflow:hidden;
+  box-shadow:0 1px 0 rgba(12,40,66,.18),0 24px 48px -18px rgba(12,40,66,.45),0 60px 90px -40px rgba(12,40,66,.35);
+}
+.win-bar{
+  height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;position:relative;
+  background:#0d1b2a;
+}
+.win-bar i{width:9px;height:9px;border-radius:50%;background:var(--mist);opacity:.45;display:block}
+.win-url{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.01em;color:rgba(238,244,247,.55);
+  background:rgba(255,255,255,.06);border-radius:4px;padding:3px 14px;white-space:nowrap;
+}
+.win img{display:block;width:100%;height:auto}
+/* the detail panel is very wide; show its left two-thirds at readable scale */
+.win-sm img{aspect-ratio:16/11;object-fit:cover;object-position:left top}
+.win-crop img{aspect-ratio:auto}
+.console .row{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.console .row.flip{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.float{
+  position:absolute;width:min(46%,420px);border-radius:6px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 40px -16px rgba(12,40,66,.5),0 0 0 1px rgba(255,255,255,.06);
+}
+.float img{display:block;width:100%;height:auto}
+.float-br{right:-22px;bottom:-26px;transform:rotate(-1.5deg)}
+.float-bl{left:-22px;bottom:-26px;transform:rotate(1.2deg)}
+.float-tl{left:-28px;top:34px;transform:rotate(1.2deg)}
+/* in the half-width rows the caption sits under the frame; keep the card above it */
+.fig .float-br{right:-28px;bottom:52px;width:min(64%,560px)}
+.stage .float{z-index:2}
+.console .row{margin-top:84px}
+.console .row + .row{margin-top:78px;padding-top:78px;border-top:1px solid var(--rule)}
+.console .fig{position:relative;margin:0;padding:0 0 0 20px}
+.console .row.flip .fig{padding:0 20px 0 0}
+.console .fig .fig-cap{margin-top:16px}
+/* caption leader: the thread from the map, as plain CSS */
+.lead{
+  display:inline-block;width:38px;height:1px;vertical-align:middle;margin:0 10px 2px 0;
+  background:repeating-linear-gradient(90deg,var(--teal) 0 4px,transparent 4px 9px);
+  position:relative;
+}
+.lead::after{
+  content:"";position:absolute;right:-2px;top:-1.5px;width:4px;height:4px;border-radius:50%;background:var(--teal);
+}
+
 /* small diagram ink */
 .dg-box{fill:#fff;stroke:var(--rule);stroke-width:1.2}
 .dg-box-a{fill:#fff;stroke:var(--teal);stroke-width:1.6}
@@ -294,6 +358,13 @@ footer{padding:56px 0 36px;background:var(--paper)}
   .col-grid{grid-template-columns:1fr 1fr}
   h1{font-size:44px}
   h2.big{font-size:34px}
+  .plate{padding:28px 20px}
+  .slab{display:none}
+  .float,.fig .float-br{position:static;width:100%;transform:none;margin-top:14px}
+  .plate .fig-cap{margin-top:18px}
+  .win-sm img{aspect-ratio:auto}
+  .console .fig,.console .row.flip .fig{padding:0}
+  .console .row,.console .row.flip{grid-template-columns:1fr;margin-top:56px}
 }
 
 /* ---- tablet / small laptop: masthead nav would crowd the logo ---- */
@@ -341,6 +412,7 @@ footer{padding:56px 0 36px;background:var(--paper)}
   .band p.stand,.band .tenet p{color:#222}
   .band::before,.cta::after{display:none}
   .sec,.band,.close{padding:24pt 0;break-inside:avoid}
-  .row,.leg,.qa-item,.stmt,.tenet{break-inside:avoid}
+  .row,.leg,.qa-item,.stmt,.tenet,.plate{break-inside:avoid}
+  .win,.float{box-shadow:none;border:1px solid #999}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
 }

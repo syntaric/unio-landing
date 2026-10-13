@@ -1,2 +1,20 @@
+# Dependencies (none expected, but keep out if ever installed)
 node_modules/
+
+# IDE / editor
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Local / temporary
+*.log
+.env
+.env.*
