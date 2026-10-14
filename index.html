@@ -7,29 +7,28 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-ES05LLM8WY');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unio | One region, one record — openEHR federation gateway</title>
-    <meta name="description" content="Unio joins the openEHR records held across a region into one, without moving any of them. Each hospital keeps its own system, its own data and its own governance.">
+    <title>Unio | One patient record across all your openEHR repositories</title>
+    <meta name="description" content="Unio federates any number of openEHR repositories behind a single endpoint, within one institution, across a hospital group or across a whole region. Clinicians see one history. Every record stays in the system that created it.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://unio.syntaric.com/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://unio.syntaric.com/">
-    <meta property="og:title" content="Unio | One region, one record">
-    <meta property="og:description" content="Unio joins the openEHR records held across a region into one, without moving any of them. Each hospital keeps its own system, its own data and its own governance.">
+    <meta property="og:title" content="Unio | One patient record across all your openEHR repositories">
+    <meta property="og:description" content="Unio federates any number of openEHR repositories behind a single endpoint. Every record stays where it was created.">
     <meta property="og:image" content="https://unio.syntaric.com/etc/unio-logo.png">
     <meta property="og:site_name" content="Unio">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Unio | One region, one record">
-    <meta name="twitter:description" content="Unio joins the openEHR records held across a region into one, without moving any of them.">
+    <meta name="twitter:title" content="Unio | One patient record across all your openEHR repositories">
+    <meta name="twitter:description" content="An openEHR federation gateway. One patient record across every repository you run.">
     <meta name="twitter:image" content="https://unio.syntaric.com/etc/unio-logo.png">
 
     <!-- Icons -->
@@ -42,7 +41,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 
@@ -58,7 +57,7 @@
           "applicationCategory": "HealthApplication",
           "operatingSystem": "Linux, Docker",
           "url": "https://unio.syntaric.com/",
-          "description": "An openEHR federation gateway that joins the records held across a region into one, without moving any of them.",
+          "description": "An openEHR federation gateway that presents any number of clinical data repositories as one openEHR system, without moving any data.",
           "publisher": { "@id": "https://syntaric.com/#organization" }
         },
         {
@@ -84,728 +83,565 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ================= MASTHEAD ================= -->
-<div class="masthead">
-  <div class="wrap mh">
-    <img src="etc/unio-logo.png" alt="Unio">
-    <nav aria-label="Primary"><a href="#why">Why Unio</a><a href="#regions">For regions</a><a href="#hospitals">For hospitals</a></nav>
-    <div class="right">
-      
-      <a class="btn" href="#briefing">Arrange a briefing</a>
-    </div>
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="container">
+    <span><strong>New:</strong> the Unio operator console now monitors every member repository once a minute.</span>
+    <a href="https://unio-console.syntaric.com/" target="_blank" rel="noopener">See the console</a>
   </div>
 </div>
 
-<!-- ================= HERO ================= -->
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/"><img src="etc/unio-logo.png" alt="Unio" width="2073" height="758"></a>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <a href="#platform">Platform</a>
+      <a href="#how">How it works</a>
+      <a href="#audience">Who we help</a>
+      <a href="https://unio-console.syntaric.com/" target="_blank" rel="noopener">Console</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-right">
+      <a class="header-link" href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#contact">Request a demo <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" onclick="document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',document.body.classList.contains('nav-open'))">
+      <span class="sr-only">Menu</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
 <main id="main">
+
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="wrap hero-inner">
-
-    <div>
-      <p class="kicker">For regions with more than one openEHR CDR</p>
-      <h1>One region.<span class="l2">One record.</span></h1>
-      <p class="lede">
-        Your hospitals already keep good records. They keep them separately, so a
-        patient who moves between them arrives as a stranger. Unio reads those
-        records as one. None of them moves.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-lg" href="#briefing">Arrange a briefing</a>
-        <a class="btn btn-out btn-lg" href="#how">See how it works</a>
-      </div>
-      <p class="hero-foot">
-        Every hospital keeps its own system and its own governance. Nothing is
-        migrated and nothing is copied into a central store.
-      </p>
-    </div>
-
-    <!-- ---------- THE REGION MAP ---------- -->
-    <figure class="mapfig" style="margin:0">
-      <svg viewBox="60 30 560 380" role="img" aria-label="Zuid-Limburg with five care organisations, their records drawn together">
-
-        <!-- faint graticule -->
-        <g>
-          <line class="gridline" x1="60" y1="94" x2="620" y2="94"/>
-          <line class="gridline" x1="60" y1="158" x2="620" y2="158"/>
-          <line class="gridline" x1="60" y1="222" x2="620" y2="222"/>
-          <line class="gridline" x1="60" y1="286" x2="620" y2="286"/>
-          <line class="gridline" x1="60" y1="350" x2="620" y2="350"/>
-          <line class="gridline" x1="152" y1="30" x2="152" y2="410"/>
-          <line class="gridline" x1="244" y1="30" x2="244" y2="410"/>
-          <line class="gridline" x1="336" y1="30" x2="336" y2="410"/>
-          <line class="gridline" x1="428" y1="30" x2="428" y2="410"/>
-          <line class="gridline" x1="520" y1="30" x2="520" y2="410"/>
-        </g>
-
-        <!-- Zuid-Limburg: a tall, narrow strip running north–south, pinched between
-             Belgium (west) and Germany (east), tapering to the point at Vaals. -->
-        <path class="terr" d="M286 52 C330 46, 372 58, 396 80 C418 100, 424 128, 438 152
-                              C452 176, 470 190, 476 214 C482 240, 466 258, 456 280
-                              C446 302, 452 322, 466 340 C480 358, 478 376, 458 386
-                              C438 396, 418 386, 400 372 C382 358, 366 348, 348 352
-                              C328 356, 316 374, 296 376 C274 378, 262 358, 258 336
-                              C254 312, 262 292, 258 270 C254 246, 238 232, 236 208
-                              C234 182, 248 164, 256 142 C264 118, 266 74, 286 52 Z"/>
-
-        <!-- Parkstad / eastern mining belt around Heerlen.
-             Outer edge retraces the landmass exactly so the tint cannot bleed past it. -->
-        <path class="terr-2" d="M396 80 C418 100, 424 128, 438 152
-                                C452 176, 470 190, 476 214 C482 240, 466 258, 456 280
-                                C446 302, 452 322, 466 340 C480 358, 478 376, 458 386
-                                C438 396, 418 386, 400 372 C382 358, 366 348, 348 352
-                                C356 320, 364 280, 374 232 C384 180, 392 128, 396 80 Z"/>
-        <!-- national boundary with Germany, as a dotted administrative line -->
-        <path d="M396 80 C392 128, 384 180, 374 232 C364 280, 356 320, 348 352"
-              fill="none" stroke="#98b0c0" stroke-width="1" stroke-dasharray="1 4" opacity=".9"/>
-
-        <!-- the Maas, running north along the western edge, kept inside the land -->
-        <path class="riv" d="M300 60 C286 98, 274 136, 272 176 C270 214, 278 250, 282 288
-                             C285 318, 290 344, 298 370"/>
-        <!-- the Geul, cutting north-east through the Heuvelland -->
-        <path class="riv" d="M282 288 C318 276, 350 282, 384 300 C410 314, 430 332, 448 350"
-              style="stroke-width:1.5;opacity:.6"/>
-
-        <!-- record threads: each care organisation to the shared view -->
-        <g>
-          <path class="thread" d="M322 108 C332 144, 340 176, 348 206"/>
-          <path class="thread" d="M424 214 C404 218, 386 222, 372 226"/>
-          <path class="thread" d="M292 306 C310 286, 328 262, 344 244"/>
-          <path class="thread" d="M418 322 C396 296, 374 268, 360 248"/>
-          <path class="thread" d="M306 344 C322 312, 336 280, 348 254"/>
-        </g>
-        <!-- the patient's own journey across the region, fainter -->
-        <path class="thread-2" d="M292 306 C330 290, 372 262, 424 214" style="stroke-dasharray:2 6"/>
-
-        <!-- neighbours and sub-region, set as map labels.
-             Belgium lies west AND south of Zuid-Limburg; Germany to the east.
-             The three meet at the Drielandenpunt, near Vaals in the south-east. -->
-        <text x="208" y="196" text-anchor="middle"
-              style="font-family:var(--sans);font-size:9px;fill:#b3c0ca;letter-spacing:.2em">BELGIË</text>
-        <text x="262" y="398" text-anchor="middle"
-              style="font-family:var(--sans);font-size:9px;fill:#b3c0ca;letter-spacing:.2em">BELGIË</text>
-        <text x="530" y="290" text-anchor="middle"
-              style="font-family:var(--sans);font-size:9px;fill:#b3c0ca;letter-spacing:.2em">DUITSLAND</text>
-        <text x="412" y="262" text-anchor="middle"
-              style="font-family:var(--sans);font-size:9px;fill:#a4b3bf;letter-spacing:.2em">PARKSTAD</text>
-
-        <!-- Drielandenpunt: where NL, BE and DE meet -->
-        <g>
-          <path d="M456 384 l4 -4 M456 384 l-4 -4 M456 384 l0 6"
-                stroke="#a4b3bf" stroke-width="1" fill="none" stroke-linecap="round"/>
-          <circle cx="456" cy="384" r="2.2" fill="none" stroke="#a4b3bf" stroke-width="1"/>
-          <text x="466" y="398"
-                style="font-family:var(--sans);font-size:8.5px;fill:#b3c0ca;letter-spacing:.08em">Drielandenpunt</text>
-        </g>
-
-        <!-- the shared view at the centre -->
-        <g class="hub">
-          <circle class="halo" cx="352" cy="228" r="40"/>
-          <circle class="halo2" cx="352" cy="228" r="24"/>
-          <circle class="core" cx="352" cy="228" r="9"/>
-          <text x="352" y="194" text-anchor="middle">één dossier</text>
-        </g>
-
-        <!-- care organisations of the region, in true relative positions -->
-        <g class="site">
-          <circle class="ring" cx="322" cy="108" r="7"/><circle class="core" cx="322" cy="108" r="3.2"/>
-          <text x="322" y="86" text-anchor="middle">Zuyderland Sittard-Geleen</text>
-          <text class="n" x="322" y="74" text-anchor="middle">topklinisch ziekenhuis</text>
-        </g>
-        <g class="site">
-          <circle class="ring" cx="424" cy="214" r="7"/><circle class="core" cx="424" cy="214" r="3.2"/>
-          <text x="438" y="210">Zuyderland Heerlen</text>
-          <text class="n" x="438" y="198">topklinisch ziekenhuis</text>
-        </g>
-        <g class="site acc">
-          <circle class="ring" cx="292" cy="306" r="7.5" style="stroke:var(--teal)"/>
-          <circle class="core" cx="292" cy="306" r="3.4"/>
-          <text x="278" y="302" text-anchor="end" style="fill:var(--deep)">Maastricht UMC+</text>
-          <text class="n" x="278" y="290" text-anchor="end">academisch ziekenhuis</text>
-        </g>
-        <g class="site">
-          <circle class="ring" cx="418" cy="322" r="7"/><circle class="core" cx="418" cy="322" r="3.2"/>
-          <text x="432" y="330">Mondriaan</text>
-          <text class="n" x="432" y="342">geestelijke gezondheidszorg</text>
-        </g>
-        <g class="site">
-          <circle class="ring" cx="306" cy="344" r="7"/><circle class="core" cx="306" cy="344" r="3.2"/>
-          <text x="306" y="370" text-anchor="middle">Maastro</text>
-          <text class="n" x="306" y="382" text-anchor="middle">radiotherapie</text>
-        </g>
-
-        <!-- compass rose, small -->
-        <g transform="translate(578,368)">
-          <circle class="compass" cx="0" cy="0" r="17"/>
-          <path class="compass" d="M0 -13 L0 13 M-13 0 L13 0"/>
-          <path d="M0 -13 L3.4 -3.4 L0 0 L-3.4 -3.4 Z" fill="#98b0c0"/>
-          <text class="compass-t" x="0" y="-21" text-anchor="middle">N</text>
-        </g>
-
-      </svg>
-      <figcaption class="map-cap">
-        <span><em>Fig. 1</em> — five care organisations, read as one region.</span>
-        <span>Zuid-Limburg, illustrative</span>
-      </figcaption>
-    </figure>
-
+  <div class="hero-photo" aria-hidden="true">
+    <img src="images/photos/corridor.jpg" alt="" width="2000" height="1500" fetchpriority="high">
   </div>
-</section>
-
-<!-- ================= I. THE SITUATION ================= -->
-<section class="sec" id="why">
-  <div class="wrap">
-    <p class="folio" data-n="I">The situation</p>
-    <div class="situation">
-
-      <div>
-        <h2 class="big">Good records, in <em>separate rooms.</em></h2>
-        <p class="stand">
-          Regions rarely have a data problem. They have a boundary problem. The record
-          exists. It just sits on the other side of an organisational line from the
-          clinician who needs it right now.
-        </p>
-      </div>
-
-      <div>
-        <div class="stmt">
-          <span class="mark">i.</span>
-          <h3>The patient is the one who travels</h3>
-          <p>
-            People are treated in one town and live in another. When it matters most,
-            an ambulance takes them to whichever hospital is nearest. Their record does
-            not follow them.
-          </p>
-        </div>
-        <div class="stmt">
-          <span class="mark">ii.</span>
-          <h3>Clinicians rebuild what already exists</h3>
-          <p>
-            Imaging is repeated. Bloods are taken again, and a medication history is
-            pieced together from someone who is unwell. The information is in the
-            region. It is missing from the room.
-          </p>
-        </div>
-        <div class="stmt">
-          <span class="mark">iii.</span>
-          <h3>The usual remedy asks too much</h3>
-          <p>
-            Centralising every record into one store means years of migration and a
-            governance argument with every hospital. At the end of it the region owns
-            a single point of failure. Most programmes stall long before that.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= II. THE JOURNEY ================= -->
-<section class="sec tint" id="how">
-  <div class="wrap">
-    <p class="folio" data-n="II">What changes</p>
-
-    <div class="situation" style="grid-template-columns:minmax(0,1fr) minmax(0,.86fr);gap:64px;align-items:center">
-      <div>
-        <h2 class="big">A patient arrives <em>somewhere new.</em></h2>
-        <p class="stand">
-          The same afternoon, in the same region, with and without a shared view.
-          Nothing about the hospitals changes. What the clinician can see does.
-        </p>
-      </div>
-      <blockquote class="pull">
-        “She was treated forty minutes up the road last winter. We had none of it, and
-        she was in no state to tell us.”
-        <span class="pull-by">The problem a regional record actually solves,<br>and the one clinicians describe first.</span>
-      </blockquote>
-    </div>
-
-    <div class="journey">
-      <div class="leg on">
-        <div class="pip">1</div>
-        <span class="where">Zuyderland Heerlen</span>
-        <h4>She arrives</h4>
-        <p>Admitted acutely on the far side of the region. Known to Zuid-Limburg, but not to this hospital.</p>
-      </div>
-      <div class="leg">
-        <div class="pip">2</div>
-        <span class="where">Across the region</span>
-        <h4>Her record is found</h4>
-        <p>The region's other care organisations are asked, at once, whether they hold anything for her. Two do.</p>
-      </div>
-      <div class="leg">
-        <div class="pip">3</div>
-        <span class="where">In the room</span>
-        <h4>It arrives as one history</h4>
-        <p>One chronological record, with each entry showing where it came from. One login.</p>
-      </div>
-      <div class="leg">
-        <div class="pip">4</div>
-        <span class="where">Back where it belongs</span>
-        <h4>Today's care is written home</h4>
-        <p>What Heerlen records stays Zuyderland's, held in Zuyderland's own system. The region can see it tomorrow.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= III. HOW IT DIFFERS ================= -->
-<section class="sec" id="differs">
-  <div class="wrap">
-    <p class="folio" data-n="III">How it differs</p>
-
-    <!-- row 1 -->
-    <div class="row">
-      <div>
-        <h3>Nothing moves house.</h3>
-        <p>
-          A regional record usually means a migration: every hospital lifts its history
-          into somebody else's database and hopes the mapping held. Unio asks instead.
-          The records stay exactly where they are, in the systems that already hold them.
-        </p>
-        <p class="under">
-          There is no data warehouse to build, and no second copy of the region's
-          clinical history that has to be secured and can quietly fall out of date.
-        </p>
-      </div>
-      <figure class="fig" style="margin:0">
-        <svg viewBox="0 0 520 300" role="img" aria-label="Central copy versus asking each hospital in place">
-
-          <!-- LEFT: the usual approach -->
-          <text class="dg-t-s" x="8" y="18" style="letter-spacing:.14em">THE USUAL APPROACH</text>
-          <g>
-            <rect class="dg-fill" x="8" y="34" width="58" height="34" rx="2"/>
-            <rect class="dg-fill" x="8" y="82" width="58" height="34" rx="2"/>
-            <rect class="dg-fill" x="8" y="130" width="58" height="34" rx="2"/>
-            <text class="dg-t-s" x="37" y="55" text-anchor="middle">hospital</text>
-            <text class="dg-t-s" x="37" y="103" text-anchor="middle">hospital</text>
-            <text class="dg-t-s" x="37" y="151" text-anchor="middle">hospital</text>
-
-            <path class="dg-ar" d="M70 51 L124 92" marker-end="url(#ah)"/>
-            <path class="dg-ar" d="M70 99 L124 99" marker-end="url(#ah)"/>
-            <path class="dg-ar" d="M70 147 L124 106" marker-end="url(#ah)"/>
-
-            <rect class="dg-fill" x="128" y="66" width="84" height="66" rx="2" style="stroke-dasharray:4 3"/>
-            <text class="dg-t-b" x="170" y="94" text-anchor="middle">central</text>
-            <text class="dg-t-b" x="170" y="109" text-anchor="middle">copy</text>
-
-            <!-- the cost marks -->
-            <g class="dg-x">
-              <path d="M150 152 L162 164 M162 152 L150 164"/>
-            </g>
-            <text class="dg-t-s" x="170" y="182" text-anchor="middle">years of migration</text>
-            <text class="dg-t-s" x="170" y="196" text-anchor="middle">a second copy to defend</text>
-          </g>
-
-          <!-- divider -->
-          <line x1="248" y1="24" x2="248" y2="250" stroke="#ddd8cc" stroke-width="1"/>
-
-          <!-- RIGHT: unio -->
-          <text class="dg-t-s" x="272" y="18" style="letter-spacing:.14em;fill:#128a8a">WITH UNIO</text>
-          <g>
-            <rect class="dg-box" x="272" y="34" width="58" height="34" rx="2"/>
-            <rect class="dg-box" x="272" y="82" width="58" height="34" rx="2"/>
-            <rect class="dg-box" x="272" y="130" width="58" height="34" rx="2"/>
-            <text class="dg-t-s" x="301" y="55" text-anchor="middle">hospital</text>
-            <text class="dg-t-s" x="301" y="103" text-anchor="middle">hospital</text>
-            <text class="dg-t-s" x="301" y="151" text-anchor="middle">hospital</text>
-
-            <!-- asks, and answers come back -->
-            <path class="dg-ar-a" d="M392 92 L338 55" marker-end="url(#aht)"/>
-            <path class="dg-ar-a" d="M392 99 L338 99" marker-end="url(#aht)"/>
-            <path class="dg-ar-a" d="M392 106 L338 145" marker-end="url(#aht)"/>
-
-            <rect class="dg-box-a" x="396" y="70" width="72" height="58" rx="2"/>
-            <text class="dg-t-b" x="432" y="94" text-anchor="middle" style="fill:#128a8a">Unio</text>
-            <text class="dg-t-s" x="432" y="110" text-anchor="middle">asks</text>
-
-            <text class="dg-t-s" x="370" y="182" text-anchor="middle">records stay in place</text>
-            <text class="dg-t-s" x="370" y="196" text-anchor="middle">nothing to migrate</text>
-          </g>
-
-          <defs>
-            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-              <path d="M0 1 L8 5 L0 9 z" fill="#3a5878"/>
-            </marker>
-            <marker id="aht" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-              <path d="M0 1 L8 5 L0 9 z" fill="#128a8a"/>
-            </marker>
-          </defs>
-        </svg>
-        <figcaption class="fig-cap">Fig. 2 — a copy of the region, versus a question asked of it.</figcaption>
-      </figure>
-    </div>
-
-    <!-- row 2 -->
-    <div class="row flip">
-      <div>
-        <h3>One history, not five portals.</h3>
-        <p>
-          Answers come back from several organisations at different speeds and in
-          different orders. Unio waits. Then it sorts them into one timeline, removes the
-          duplicates and hands over a single history.
-        </p>
-        <p>
-          If one of them is unreachable, the clinician is told so plainly. The record
-          says what it is missing rather than pretending to be complete.
-        </p>
-        <p class="under">
-          A partial answer that admits it is partial is safe. One that looks whole is not.
-        </p>
-      </div>
-      <figure class="fig" style="margin:0">
-        <svg viewBox="0 0 520 300" role="img" aria-label="Answers from several hospitals merged into one timeline">
-
-          <!-- incoming, ragged -->
-          <text class="dg-t-s" x="8" y="18" style="letter-spacing:.14em">FOUR ANSWERS</text>
-          <g>
-            <rect class="dg-box" x="8" y="34" width="164" height="24" rx="2"/>
-            <circle cx="22" cy="46" r="3.6" fill="#128a8a"/>
-            <text class="dg-t" x="34" y="50">Maastricht UMC+ · 3 entries</text>
-
-            <rect class="dg-box" x="8" y="66" width="164" height="24" rx="2"/>
-            <circle cx="22" cy="78" r="3.6" fill="#3a5878"/>
-            <text class="dg-t" x="34" y="82">Zuyderland · 5 entries</text>
-
-            <rect class="dg-box" x="8" y="98" width="164" height="24" rx="2"/>
-            <circle cx="22" cy="110" r="3.6" fill="#1a6272"/>
-            <text class="dg-t" x="34" y="114">Maastro · 1 entry</text>
-
-            <rect class="dg-box" x="8" y="130" width="164" height="24" rx="2" style="stroke-dasharray:4 3"/>
-            <circle cx="22" cy="142" r="3.6" fill="#c78f14"/>
-            <text class="dg-t-s" x="34" y="146">Mondriaan · niet bereikbaar</text>
-          </g>
-
-          <!-- funnel -->
-          <path class="dg-ar-a" d="M178 46 C208 46, 208 96, 236 96"/>
-          <path class="dg-ar-a" d="M178 78 C208 78, 212 94, 236 96"/>
-          <path class="dg-ar-a" d="M178 110 C208 110, 212 98, 236 96"/>
-          <path class="dg-ar" d="M178 142 C206 142, 214 104, 236 98" style="stroke-dasharray:3 3;opacity:.45"/>
-
-          <!-- merged timeline -->
-          <text class="dg-t-s" x="256" y="18" style="letter-spacing:.14em;fill:#128a8a">ONE HISTORY</text>
-          <line x1="266" y1="34" x2="266" y2="214" stroke="#128a8a" stroke-width="1.4"/>
-
-          <g>
-            <circle cx="266" cy="46" r="4" fill="#3a5878"/>
-            <text class="dg-t" x="280" y="43">14 mrt · ontslagbrief</text>
-            <text class="dg-t-s" x="280" y="56">Zuyderland Heerlen</text>
-
-            <circle cx="266" cy="88" r="4" fill="#128a8a"/>
-            <text class="dg-t" x="280" y="85">2 feb · medicatiebeoordeling</text>
-            <text class="dg-t-s" x="280" y="98">Maastricht UMC+</text>
-
-            <circle cx="266" cy="130" r="4" fill="#1a6272"/>
-            <text class="dg-t" x="280" y="127">19 jan · bestralingsverslag</text>
-            <text class="dg-t-s" x="280" y="140">Maastro</text>
-
-            <circle cx="266" cy="172" r="4" fill="#3a5878"/>
-            <text class="dg-t" x="280" y="169">6 dec · polikliniekbrief</text>
-            <text class="dg-t-s" x="280" y="182">Zuyderland Sittard-Geleen</text>
-          </g>
-
-          <!-- honest gap -->
-          <rect x="256" y="200" width="252" height="34" rx="2" fill="#faf4e4" stroke="#e0c88a" stroke-width="1"/>
-          <circle cx="270" cy="217" r="3.6" fill="#c78f14"/>
-          <text class="dg-t-s" x="282" y="214" style="fill:#7a5f12">Mondriaan could not be reached.</text>
-          <text class="dg-t-s" x="282" y="227" style="fill:#7a5f12">This history may be incomplete.</text>
-
-        </svg>
-        <figcaption class="fig-cap">Fig. 3 — merged in time order, with the gap declared.</figcaption>
-      </figure>
-    </div>
-
-    <!-- row 3 -->
-    <div class="row">
-      <div>
-        <h3>Ask by patient, not by hospital.</h3>
-        <p>
-          A clinician in Heerlen should not have to know that a patient was once treated
-          in Maastricht in order to find the Maastricht record. They ask about the person;
-          the region works out who holds what.
-        </p>
-        <p class="under">
-          Identity is matched once, centrally and carefully. A hospital is never
-          asked to search for someone it has no business knowing about.
-        </p>
-      </div>
-      <figure class="fig" style="margin:0">
-        <svg viewBox="0 0 520 260" role="img" aria-label="One question about a person, resolved to the hospitals that hold records">
-
-          <!-- the question -->
-          <rect class="dg-box-a" x="8" y="96" width="152" height="54" rx="2"/>
-          <text class="dg-t-b" x="84" y="118" text-anchor="middle">“What do we know</text>
-          <text class="dg-t-b" x="84" y="134" text-anchor="middle">about this patient?”</text>
-
-          <path class="dg-ar-a" d="M164 123 L216 123" marker-end="url(#aht2)"/>
-
-          <!-- resolution -->
-          <circle cx="252" cy="123" r="30" fill="#fff" stroke="#128a8a" stroke-width="1.6"/>
-          <text class="dg-t-s" x="252" y="119" text-anchor="middle" style="fill:#128a8a">identity</text>
-          <text class="dg-t-s" x="252" y="132" text-anchor="middle" style="fill:#128a8a">matched</text>
-
-          <!-- fan to holders / non-holders -->
-          <path class="dg-ar-a" d="M284 108 C320 92, 336 66, 363 58" marker-end="url(#aht2)"/>
-          <path class="dg-ar-a" d="M286 123 L363 123" marker-end="url(#aht2)"/>
-          <path class="dg-ar-a" d="M284 138 C320 154, 336 180, 363 188" marker-end="url(#aht2)" style="opacity:.4"/>
-
-          <g>
-            <rect class="dg-box-a" x="368" y="40" width="148" height="36" rx="2"/>
-            <text class="dg-t-b" x="380" y="56">Maastricht UMC+</text>
-            <text class="dg-t-s" x="380" y="69">holds a record</text>
-
-            <rect class="dg-box-a" x="368" y="105" width="148" height="36" rx="2"/>
-            <text class="dg-t-b" x="380" y="121">Zuyderland</text>
-            <text class="dg-t-s" x="380" y="134">holds a record</text>
-
-            <rect class="dg-box" x="368" y="170" width="148" height="36" rx="2" style="stroke-dasharray:4 3"/>
-            <text class="dg-t" x="380" y="186" style="fill:#7c8b99">Maastro</text>
-            <text class="dg-t-s" x="380" y="199">nothing held · not asked</text>
-          </g>
-
-          <defs>
-            <marker id="aht2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-              <path d="M0 1 L8 5 L0 9 z" fill="#128a8a"/>
-            </marker>
-          </defs>
-        </svg>
-        <figcaption class="fig-cap">Fig. 4 — one question about a person, not five searches by organisation.</figcaption>
-      </figure>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= IV. SOVEREIGNTY BAND ================= -->
-<section class="band" id="regions">
-  <div class="wrap">
-    <p class="folio" data-n="IV">The bargain</p>
-    <h2 class="big">Nobody has to <em>give anything up.</em></h2>
-    <p class="stand">
-      A regional record only gets built if every hospital is willing to join it. That
-      means the terms have to be acceptable to the most cautious member, not the most
-      enthusiastic one.
-    </p>
-
-    <div class="tenets">
-      <div class="tenet">
-        <span class="no">i.</span>
-        <h4>Each hospital still owns its record</h4>
-        <p>
-          Data stays in the system that created it, under that organisation's control.
-          Joining the region is not a transfer of custody. A hospital that leaves
-          takes nothing away from anyone else.
-        </p>
-      </div>
-      <div class="tenet">
-        <span class="no">ii.</span>
-        <h4>A record is only written by its owner</h4>
-        <p>
-          Care recorded at one hospital is written there and nowhere else. There is never
-          a second version of the truth in another building, and never a question about
-          which copy is current.
-        </p>
-      </div>
-      <div class="tenet">
-        <span class="no">iii.</span>
-        <h4>Who was asked, and what was shown</h4>
-        <p>
-          Every request across the region is written down. The log shows who asked and
-          about whom, and it shows which hospitals answered. The region can show its
-          regulator exactly how the shared record has been used.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= V. THE OPERATOR'S VIEW ================= -->
-<!-- Console captures from the demo stack, renamed to fictional regional
-     members (Regionaal Ziekenhuis Noord, Kliniek Zuid). Framed as plates in the
-     page's own paper, not as product chrome: straight on, captioned, numbered. -->
-<section class="sec console" id="console">
-  <div class="wrap">
-    <p class="folio" data-n="V">The operator's view</p>
-    <h2 class="big">What the region's operator <em>sees.</em></h2>
-    <p class="stand">
-      One console for the whole region. It shows which hospitals are reachable and how
-      quickly each one answers, and it lists every question that was asked across the
-      boundary. There is not a single clinical fact in it.
-    </p>
-
-    <!-- plate A: the dashboard, seven days -->
-    <figure class="plate">
-      <div class="slab" aria-hidden="true"></div>
-      <div class="stage">
-        <div class="win">
-          <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span class="win-url">console.regio.example/ui/</span></div>
-          <img src="images/console/dashboard-7d.png" width="2880" height="1920" loading="lazy" alt="The operator console dashboard over seven days: requests per minute, reachable sources, error rate and p95 latency, with traffic and latency charts per hospital and a strip of availability cells.">
-        </div>
-        <div class="float float-bl">
-          <img src="images/console/incidents.png" width="1094" height="670" loading="lazy" alt="The recent-incidents card, lifted out of the dashboard: integrity incidents and failed requests, each linking to the screen that explains it.">
-        </div>
-      </div>
-      <figcaption class="fig-cap"><span class="lead" aria-hidden="true"></span>Fig. 5 — seven days of the region's traffic, hospital by hospital, and the incidents that need a person.</figcaption>
-    </figure>
-
-    <!-- row B: a request, as stored -->
-    <div class="row">
-      <div>
-        <h3>Every question, accounted for.</h3>
-        <p>
-          Each request is recorded with who asked and which hospitals answered, down to
-          how long each one took. The question itself is kept. The patient identifier is
-          removed before it is written down.
-        </p>
-        <p class="under">
-          There is no screen on which a response body or a patient identifier can be
-          read, because neither is ever stored.
-        </p>
-      </div>
-      <figure class="fig">
-        <div class="win win-sm">
-          <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span class="win-url">console.regio.example/ui/requests</span></div>
-          <img src="images/console/request-detail.png" width="2372" height="950" loading="lazy" alt="One expanded request: the stored question with the patient identifier replaced by a placeholder, the outcome per hospital with latency and row count, and the request's metadata.">
-        </div>
-        <div class="float float-br">
-          <img src="images/console/privacy-note.png" width="1140" height="322" loading="lazy" alt="A note in the console: this console has no affordance to view a response body or a patient identifier, because neither is ever stored.">
-        </div>
-        <figcaption class="fig-cap">Fig. 6 — the question that was asked, as it was stored.</figcaption>
-      </figure>
-    </div>
-
-    <!-- row C: one member, probed -->
-    <div class="row flip">
-      <div>
-        <h3>An outage is reported, not hidden.</h3>
-        <p>
-          Every member is probed once a minute. A slow or unreachable hospital is shown
-          as such, and the region's answers say plainly what they could not reach.
-        </p>
-        <p class="under">
-          The red cells are a real outage in the demo data, and the shaded span in the
-          latency chart is the same forty minutes seen from the other side. The record for
-          that period says it is incomplete.
-        </p>
-      </div>
-      <figure class="fig">
-        <div class="win win-crop">
-          <div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><span class="win-url">console.regio.example/ui/sources/kliniek-zuid</span></div>
-          <img src="images/console/source-detail-crop.png" width="2472" height="1244" loading="lazy" alt="One member's page: its base URL and organisation, probe availability over six hours, a ribbon of probe outcomes beside its round-trip latency chart with the outage shaded.">
-        </div>
-        <figcaption class="fig-cap">Fig. 7 — one member, probed once a minute: reachability and round-trip, side by side.</figcaption>
-      </figure>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= VI. FOR THE HOSPITALS ================= -->
-<section class="sec" id="hospitals">
-  <div class="wrap">
-    <p class="folio" data-n="VI">For the hospitals joining</p>
-    <div class="cio">
-
-      <div>
-        <h2 class="big">What it asks of <em>your systems.</em></h2>
-        <p class="stand">
-          The questions a hospital IT director asks in the first meeting, answered in the
-          order they usually come up.
-        </p>
-      </div>
-
-      <div class="qa">
-        <div class="qa-item">
-          <p class="q">Do we have to replace or migrate our CDR?</p>
-          <p class="a">
-            <b>No.</b> You keep the system you have. Unio sits in front of the region and
-            speaks to your CDR in the standard openEHR way it already supports. There is
-            nothing to install inside your hospital.
-          </p>
-        </div>
-        <div class="qa-item">
-          <p class="q">Do our own applications have to change?</p>
-          <p class="a">
-            <b>No.</b> Anything already built against a standard openEHR system works
-            against the region unchanged. Nothing has to be rewritten to become
-            “federation-aware”.
-          </p>
-        </div>
-        <div class="qa-item">
-          <p class="q">What load does this put on us?</p>
-          <p class="a">
-            One ordinary query per request, and only when a patient is actually being
-            looked up. There is no bulk extract and no replication running against your
-            database. Nothing happens overnight.
-          </p>
-        </div>
-        <div class="qa-item">
-          <p class="q">What if we are slow or offline one day?</p>
-          <p class="a">
-            The region carries on without you and says so. Your outage never becomes
-            everyone's outage. The shared record says what it could not reach.
-          </p>
-        </div>
-        <div class="qa-item">
-          <p class="q">Can we leave?</p>
-          <p class="a">
-            <b>Yes.</b> Because nothing of yours was ever copied elsewhere, leaving is a
-            configuration change. Your records are already, and only, where they always
-            were.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= CLOSING ================= -->
-<section class="close" id="briefing">
-  <div class="wrap">
-    <h2>Your region already has the record. <em>Let it be read.</em></h2>
+  <div class="container hero-inner">
+    <h1>One patient record across all your repositories</h1>
     <p>
-      We will sit down with your region's hospitals and look at what each one runs today.
-      Then we show what a shared record would look like in practice. Nobody commits to a
-      programme first.
+      Unio federates any number of openEHR repositories behind a single endpoint,
+      whether they sit in one institution, a hospital group or a whole region.
+      Clinicians see one history. Every record stays in the system that created it.
     </p>
-    <div class="btns">
-      <a class="btn btn-lg" href="mailto:info@syntaric.com?subject=Unio%20briefing">Arrange a briefing</a>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="#contact">Request a demo <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost btn-lg" href="#how">How it works</a>
     </div>
-    <p class="spec">
-      Unio is built by SYNTARIC on the openEHR standard, and implements the openEHR
-      federation specification in full on the gateway side.
-    </p>
   </div>
 </section>
 
-<!-- ================= COLOPHON ================= -->
+<!-- ================= THE CONSOLE, FIRST LOOK ================= -->
+<section class="shot-section">
+  <div class="container">
+    <div class="window window-lg">
+      <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>unio-console.syntaric.com/ui/</span></div>
+      <img src="images/console/dashboard-7d.png" width="2880" height="1920" alt="The Unio operator console dashboard over seven days: requests per minute, active sources, error rate, p95 latency, per-member charts and recent incidents.">
+    </div>
+    <p class="shot-caption">The operator console, seven days of a demonstration federation. Every member probed once a minute, every request logged without a patient identifier.</p>
+  </div>
+</section>
+
+<!-- ================= WHO WE HELP ================= -->
+<section class="section" id="audience">
+  <div class="container split">
+    <div class="split-label">
+      <h2>Who do we help?</h2>
+    </div>
+    <div class="split-cols">
+      <div class="split-col">
+        <svg class="big-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 42h36"/><path d="M10 42V16l14-8 14 8v26"/><path d="M19 42V31h10v11"/><path d="M24 18v6M21 21h6"/></svg>
+        <h3>Regions and health networks</h3>
+        <p>Give every clinician in the network one view of the patient, without a central data warehouse and without a migration programme.</p>
+        <a class="link" href="#platform">Find out more</a>
+      </div>
+      <div class="split-col">
+        <svg class="big-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 42V10a3 3 0 0 1 3-3h26a3 3 0 0 1 3 3v32"/><path d="M4 42h40"/><path d="M17 14h4M27 14h4M17 22h4M27 22h4M17 30h4M27 30h4"/><path d="M21 42v-7h6v7"/></svg>
+        <h3>Hospitals and care organisations</h3>
+        <p>Join a shared record while keeping your own repository and applications, or federate the several CDRs you already run inside one institution.</p>
+        <a class="link" href="#sources">Find out more</a>
+      </div>
+      <div class="split-col">
+        <svg class="big-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 18l-8 6 8 6M32 18l8 6-8 6M28 10l-8 28"/></svg>
+        <h3>Application vendors and integrators</h3>
+        <p>Build against one openEHR endpoint for the whole federation instead of one per repository. Existing openEHR applications need no changes.</p>
+        <a class="link" href="#how">Find out more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section section-soft" id="how">
+  <div class="container">
+    <div class="centered-head">
+      <h2>Many repositories. One openEHR endpoint.</h2>
+      <p>
+        Applications talk to Unio exactly as they would to a single clinical data
+        repository. Unio finds the records across the federation, queries each member
+        in place and returns one answer.
+      </p>
+    </div>
+
+    <figure class="arch">
+      <svg viewBox="0 0 1120 440" role="img" aria-label="Applications send openEHR requests to Unio, which resolves identity, queries each member repository in parallel and returns one merged result">
+        <defs>
+          <linearGradient id="gw" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#153a5c"/>
+            <stop offset="1" stop-color="#0c2842"/>
+          </linearGradient>
+          <filter id="soft" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0c2842" flood-opacity=".12"/>
+          </filter>
+          <marker id="m-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 1 L9 5 L0 9 z" fill="#8a97a6"/>
+          </marker>
+          <marker id="m-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 1 L9 5 L0 9 z" fill="#128a8a"/>
+          </marker>
+        </defs>
+
+        <!-- applications -->
+        <text class="a-head" x="150" y="70" text-anchor="middle">Applications</text>
+        <g class="a-app" filter="url(#soft)">
+          <rect x="60" y="92" width="180" height="56" rx="12"/>
+          <text x="150" y="126" text-anchor="middle">Shared record viewer</text>
+        </g>
+        <g class="a-app" filter="url(#soft)">
+          <rect x="60" y="192" width="180" height="56" rx="12"/>
+          <text x="150" y="226" text-anchor="middle">Hospital EHR</text>
+        </g>
+        <g class="a-app" filter="url(#soft)">
+          <rect x="60" y="292" width="180" height="56" rx="12"/>
+          <text x="150" y="326" text-anchor="middle">Research and analytics</text>
+        </g>
+
+        <!-- connectors to gateway -->
+        <path class="a-line" d="M242 120 C300 120, 300 220, 356 220" marker-end="url(#m-grey)"/>
+        <path class="a-line" d="M242 220 L356 220" marker-end="url(#m-grey)"/>
+        <path class="a-line" d="M242 320 C300 320, 300 220, 356 220" marker-end="url(#m-grey)"/>
+        <text class="a-note" x="300" y="200" text-anchor="middle">openEHR REST</text>
+
+        <!-- gateway -->
+        <g filter="url(#soft)">
+          <rect x="360" y="120" width="400" height="200" rx="20" fill="url(#gw)"/>
+        </g>
+        <image href="etc/unio-mark.png" x="540" y="140" width="40" height="40"/>
+        <text class="a-gw" x="560" y="210" text-anchor="middle">Unio federation gateway</text>
+        <g class="a-chip">
+          <rect x="384" y="236" width="82" height="30" rx="15"/><text x="425" y="256" text-anchor="middle">Identity</text>
+          <rect x="474" y="236" width="82" height="30" rx="15"/><text x="515" y="256" text-anchor="middle">Fan-out</text>
+          <rect x="564" y="236" width="82" height="30" rx="15"/><text x="605" y="256" text-anchor="middle">Merge</text>
+          <rect x="654" y="236" width="82" height="30" rx="15"/><text x="695" y="256" text-anchor="middle">Audit</text>
+        </g>
+
+        <!-- connectors to members -->
+        <path class="a-line-t" d="M762 220 C820 220, 820 120, 876 120" marker-end="url(#m-teal)"/>
+        <path class="a-line-t" d="M762 220 L876 220" marker-end="url(#m-teal)"/>
+        <path class="a-line-t" d="M762 220 C820 220, 820 320, 876 320" marker-end="url(#m-teal)"/>
+
+        <!-- members -->
+        <text class="a-head" x="970" y="70" text-anchor="middle">Member repositories</text>
+        <g class="a-cdr" filter="url(#soft)">
+          <rect x="880" y="92" width="180" height="56" rx="12"/>
+          <text class="n" x="970" y="116" text-anchor="middle">Hospital A</text>
+          <text class="s" x="970" y="136" text-anchor="middle">openEHR CDR · data stays here</text>
+        </g>
+        <g class="a-cdr" filter="url(#soft)">
+          <rect x="880" y="192" width="180" height="56" rx="12"/>
+          <text class="n" x="970" y="216" text-anchor="middle">Clinic B</text>
+          <text class="s" x="970" y="236" text-anchor="middle">openEHR CDR · data stays here</text>
+        </g>
+        <g class="a-cdr" filter="url(#soft)">
+          <rect x="880" y="292" width="180" height="56" rx="12"/>
+          <text class="n" x="970" y="316" text-anchor="middle">Department C</text>
+          <text class="s" x="970" y="336" text-anchor="middle">openEHR CDR · data stays here</text>
+        </g>
+
+        <text class="a-note" x="560" y="400" text-anchor="middle">No central copy of clinical data. Each repository is queried in place, in parallel, with a timeout per member.</text>
+      </svg>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-no">01</span>
+        <h3>A request arrives</h3>
+        <p>An application sends an ordinary openEHR request to Unio, exactly as it would to a single CDR.</p>
+      </div>
+      <div class="step">
+        <span class="step-no">02</span>
+        <h3>Identity is resolved</h3>
+        <p>Unio matches the patient centrally and works out which members hold a record. Members that hold nothing are not asked.</p>
+      </div>
+      <div class="step">
+        <span class="step-no">03</span>
+        <h3>Members answer in parallel</h3>
+        <p>Each repository is queried over its standard openEHR interface. A slow or unreachable member does not block the others.</p>
+      </div>
+      <div class="step">
+        <span class="step-no">04</span>
+        <h3>One result, with provenance</h3>
+        <p>Results are merged in time order and deduplicated. Each entry names its source. If a member could not be reached, the response says so.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FHIR FEDERATION ================= -->
+<section class="section" id="fhir">
+  <div class="container fhir-grid">
+    <div class="fhir-text">
+      <div class="tags"><span>Extension</span><span>openFHIR</span><span>FHIR R4</span></div>
+      <h2>The same federation, reached over FHIR</h2>
+      <p>
+        Applications that speak FHIR rather than openEHR get the same federated
+        record. <a href="https://open-fhir.com/">openFHIR</a> sits in front of Unio
+        and exposes a FHIR API. A FHIR query is translated into AQL, Unio runs it
+        across the member repositories, and the merged openEHR result is mapped
+        back into FHIR resources on the way out.
+      </p>
+      <p>
+        openFHIR is also a SYNTARIC product, so the two are built to work together.
+        Unio joins the openEHR repositories into one record; openFHIR opens that
+        record to the FHIR world, including national exchange platforms and the
+        European Health Data Space. Together they give a federation one openEHR
+        endpoint and one FHIR endpoint, both backed by the same data, with one
+        team behind them.
+      </p>
+      <ul class="dots">
+        <li>One FHIR endpoint for the whole federation, with no FHIR server at any member</li>
+        <li>One set of mappings, written once in the open FHIR Connect specification</li>
+        <li>Identity resolution, provenance, partial-result flags and audit work exactly as before</li>
+        <li>Members keep running plain openEHR repositories; nothing changes on their side</li>
+      </ul>
+      <a class="btn btn-outline" href="https://open-fhir.com/">More about openFHIR</a>
+    </div>
+
+    <figure class="fhir-figure">
+      <svg viewBox="0 0 560 520" role="img" aria-label="A FHIR application queries openFHIR, which translates the query to AQL and passes it to the Unio federation gateway, which queries each member repository; results return as openEHR data and are mapped to FHIR">
+        <defs>
+          <!-- arrowheads drawn pointing +x; orient="auto" turns them along each path -->
+          <marker id="f-down" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 1 L9 5 L0 9 z" fill="#128a8a"/>
+          </marker>
+          <marker id="f-up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 1 L9 5 L0 9 z" fill="#8a97a6"/>
+          </marker>
+        </defs>
+
+        <!-- FHIR application -->
+        <g class="f-app">
+          <rect x="130" y="16" width="300" height="56" rx="12"/>
+          <text x="280" y="50" text-anchor="middle">FHIR application</text>
+        </g>
+
+        <!-- down: FHIR search -->
+        <path class="f-req" d="M250 74 L250 118" marker-end="url(#f-down)"/>
+        <text class="f-lbl-req" x="238" y="100" text-anchor="end">FHIR search</text>
+        <!-- up: FHIR bundle -->
+        <path class="f-res" d="M310 118 L310 74" marker-end="url(#f-up)"/>
+        <text class="f-lbl-res" x="322" y="100">FHIR Bundle</text>
+
+        <!-- openFHIR -->
+        <g class="f-ofhir">
+          <rect x="90" y="124" width="380" height="84" rx="14"/>
+          <text class="t" x="280" y="156" text-anchor="middle">openFHIR</text>
+          <text class="s" x="280" y="180" text-anchor="middle">FHIR API · FHIR search → AQL · openEHR → FHIR mapping</text>
+        </g>
+
+        <!-- down: AQL -->
+        <path class="f-req" d="M250 210 L250 254" marker-end="url(#f-down)"/>
+        <text class="f-lbl-req" x="238" y="236" text-anchor="end">AQL</text>
+        <!-- up: openEHR result -->
+        <path class="f-res" d="M310 254 L310 210" marker-end="url(#f-up)"/>
+        <text class="f-lbl-res" x="322" y="236">merged openEHR result</text>
+
+        <!-- Unio -->
+        <g class="f-unio">
+          <rect x="90" y="260" width="380" height="84" rx="14"/>
+          <text class="t" x="280" y="292" text-anchor="middle">Unio federation gateway</text>
+          <text class="s" x="280" y="316" text-anchor="middle">identity · parallel fan-out · merge and provenance · audit</text>
+        </g>
+
+        <!-- fan-out to members -->
+        <path class="f-req" d="M180 346 L120 404" marker-end="url(#f-down)"/>
+        <path class="f-req" d="M280 346 L280 404" marker-end="url(#f-down)"/>
+        <path class="f-req" d="M380 346 L440 404" marker-end="url(#f-down)"/>
+        <text class="f-lbl-req" x="280" y="384" text-anchor="middle" style="fill:#128a8a">openEHR REST, in parallel</text>
+
+        <!-- members -->
+        <g class="f-cdr">
+          <rect x="40" y="410" width="160" height="60" rx="12"/>
+          <text class="n" x="120" y="436" text-anchor="middle">Hospital A</text>
+          <text class="s" x="120" y="456" text-anchor="middle">openEHR CDR</text>
+        </g>
+        <g class="f-cdr">
+          <rect x="200" y="410" width="160" height="60" rx="12"/>
+          <text class="n" x="280" y="436" text-anchor="middle">Clinic B</text>
+          <text class="s" x="280" y="456" text-anchor="middle">openEHR CDR</text>
+        </g>
+        <g class="f-cdr">
+          <rect x="360" y="410" width="160" height="60" rx="12"/>
+          <text class="n" x="440" y="436" text-anchor="middle">Department C</text>
+          <text class="s" x="440" y="456" text-anchor="middle">openEHR CDR</text>
+        </g>
+
+        <text class="f-note" x="280" y="504" text-anchor="middle">Members stay plain openEHR. FHIR exists only at the edge.</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= CONSOLE SHOWCASE ================= -->
+<section class="dark" id="console">
+  <div class="container dark-head">
+    <h2>See what the operator sees</h2>
+    <p>
+      The operator console shows how the federation is behaving: which
+      members are reachable, how quickly each one answers, and every request that
+      crossed an organisational boundary. It stores no clinical data and no
+      patient identifiers.
+    </p>
+  </div>
+  <div class="container dark-shots">
+    <div class="window">
+      <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>unio-console.syntaric.com/ui/sources/kliniek-zuid</span></div>
+      <img src="images/console/source-detail-crop.png" width="2472" height="1244" loading="lazy" alt="One member's page in the console: probe availability over six hours, a ribbon of probe outcomes and the latency chart with an outage marked.">
+    </div>
+    <div class="window">
+      <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>unio-console.syntaric.com/ui/requests</span></div>
+      <img src="images/console/request-detail.png" width="2372" height="950" loading="lazy" alt="A request as stored by Unio: the AQL query with the patient identifier redacted and the outcome per member.">
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLATFORM / SOLUTIONS ================= -->
+<section class="section" id="platform">
+  <div class="container">
+    <div class="centered-head">
+      <h2>Built for federations that keep data where it is created</h2>
+      <p>
+        Unio is the shared record for any set of openEHR repositories whose owners
+        keep their own systems: the departments of one institution, the hospitals of
+        a group, or the care organisations of a region. Three capabilities make that work.
+      </p>
+    </div>
+
+    <article class="solution">
+      <div class="solution-media">
+        <img src="images/photos/clinician-monitors.jpg" width="1600" height="1067" loading="lazy" alt="A clinician working at two monitors in a hospital office.">
+      </div>
+      <div class="solution-body">
+        <div class="tags"><span>Federation gateway</span><span>openEHR REST</span><span>AQL</span></div>
+        <h3>A single openEHR endpoint for the whole federation</h3>
+        <p>
+          The gateway accepts standard openEHR requests, including AQL, and resolves
+          them across the member repositories. Applications do not need to know which
+          organisation holds which record.
+        </p>
+        <ul class="dots">
+          <li>Existing openEHR applications connect without modification</li>
+          <li>Parallel fan-out with a timeout per member</li>
+          <li>Merged, deduplicated results with the source on every entry</li>
+        </ul>
+        <a class="btn btn-outline" href="#how">How it works</a>
+      </div>
+    </article>
+
+    <article class="solution">
+      <div class="solution-media solution-media-shot">
+        <img src="images/console/incidents.png" width="1094" height="670" loading="lazy" alt="The recent-incidents panel of the console: failed requests and identifier conflicts between members.">
+      </div>
+      <div class="solution-body">
+        <div class="tags"><span>Operator console</span><span>Monitoring</span><span>Audit</span></div>
+        <h3>Full audit, without clinical data</h3>
+        <p>
+          Every request is recorded with the requesting principal, the members asked
+          and the time each took. Patient identifiers are replaced before the record
+          is written. No request or response bodies are stored.
+        </p>
+        <ul class="dots">
+          <li>Request volume, error rate and p95 latency over 1 hour to 7 days</li>
+          <li>Incidents such as failed requests and identifier conflicts</li>
+          <li>Nothing in the console can display a clinical fact</li>
+        </ul>
+        <a class="btn btn-outline" href="https://unio-console.syntaric.com/" target="_blank" rel="noopener">See the console</a>
+      </div>
+    </article>
+
+    <article class="solution">
+      <div class="solution-media">
+        <img src="images/photos/clinicians-screen.jpg" width="1600" height="1067" loading="lazy" alt="Two clinicians discussing information on a screen.">
+      </div>
+      <div class="solution-body">
+        <div class="tags"><span>Governance</span><span>Member autonomy</span></div>
+        <h3>Terms the most cautious member can accept</h3>
+        <p>
+          Data stays with its owner. Care recorded in one system is written to that
+          system's repository and nowhere else. Joining and leaving the federation are
+          configuration changes, and a member that leaves takes nothing away from
+          anyone else.
+        </p>
+        <ul class="dots">
+          <li>No central copy of clinical data to secure or keep current</li>
+          <li>One ordinary query per request, no bulk extracts, no replication</li>
+          <li>Partial results are declared partial, never presented as complete</li>
+        </ul>
+        <a class="btn btn-outline" href="#sources">For source systems</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= GOVERNANCE BAND ================= -->
+<section class="photo-band" id="sources">
+  <div class="photo-band-bg" aria-hidden="true"><img src="images/photos/hero-clinicians.jpg" alt="" width="2000" height="1333" loading="lazy"></div>
+  <div class="container">
+    <div class="photo-band-head">
+      <h2>What joining asks of a source system</h2>
+      <p>Unio sits in front of the federation and speaks to each member repository over the openEHR interface it already exposes. There is nothing to install on the member's side.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><span class="fact-k">Replace or migrate the CDR</span><span class="fact-v">Not required</span></div>
+      <div class="fact"><span class="fact-k">Change existing applications</span><span class="fact-v">Not required</span></div>
+      <div class="fact"><span class="fact-k">Software inside the organisation</span><span class="fact-v">None</span></div>
+      <div class="fact"><span class="fact-k">Load on the repository</span><span class="fact-v">One query per request</span></div>
+      <div class="fact"><span class="fact-k">If the system is offline</span><span class="fact-v">The federation continues and says so</span></div>
+      <div class="fact"><span class="fact-k">Leaving the federation</span><span class="fact-v">A configuration change</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section section-soft" id="faq">
+  <div class="container split">
+    <div class="split-label">
+      <h2>Frequently asked questions</h2>
+      <p class="split-sub">The questions programme leads and IT directors ask in the first meeting.</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Do we have to replace or migrate our clinical data repository?</summary>
+        <p>No. You keep the repository you have. Unio queries it over the standard openEHR REST API it already supports. Nothing is installed on your side.</p>
+      </details>
+      <details>
+        <summary>Which openEHR repositories does Unio work with?</summary>
+        <p>Any repository that exposes the standard openEHR REST API can be a member. Our demonstration environment federates EHRbase and FerroEHR repositories.</p>
+      </details>
+      <details>
+        <summary>Do our own applications have to change?</summary>
+        <p>No. Applications built against a single openEHR repository work against the federation through Unio without modification. There is no federation-specific API to adopt.</p>
+      </details>
+      <details>
+        <summary>Can applications use FHIR instead of openEHR?</summary>
+        <p>Yes, by putting openFHIR in front of Unio. openFHIR exposes a FHIR API, translates FHIR queries into AQL for the federation and maps the merged openEHR result back into FHIR resources. The member repositories stay plain openEHR and need no FHIR server of their own. openFHIR is also developed by SYNTARIC, so the two products are designed and supported together.</p>
+      </details>
+      <details>
+        <summary>Does Unio store clinical data?</summary>
+        <p>No. Unio keeps only request metadata: counts, statuses, latencies, errors and member URLs. Patient identifiers are replaced before a request is written to the log, and no request or response bodies are stored.</p>
+      </details>
+      <details>
+        <summary>Where does Unio run?</summary>
+        <p>Unio is delivered as a Docker image and runs on Linux. The organisation operating the federation deploys and runs it in the infrastructure of its choice.</p>
+      </details>
+      <details>
+        <summary>What happens when a member is slow or offline?</summary>
+        <p>Each member has its own timeout. A member that does not answer in time is reported as unreachable, the other members' results are returned, and the response is marked as partial. The outage is visible in the operator console.</p>
+      </details>
+      <details>
+        <summary>Can a member leave the federation later?</summary>
+        <p>Yes. Because nothing was copied out of the member's repository, leaving is a configuration change on the gateway. The member's records are already, and only, in its own system.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="container contact">
+    <div class="contact-copy">
+      <h2>Get in touch</h2>
+      <p>
+        Tell us what you are looking at and we will set up the right session: a
+        demonstration for a region or hospital group, a technical briefing for IT,
+        or commercial information.
+      </p>
+      <p class="contact-meta">
+        Unio is developed by SYNTARIC.<br>
+        <a href="mailto:info@syntaric.com">info@syntaric.com</a>
+      </p>
+    </div>
+    <!-- Posts to the Cloudflare Worker in ../worker. Set the action to the
+         worker's URL after `npm run deploy` (see README). -->
+    <form class="contact-form" id="contact-form" action="https://unio-contact.syntaric.workers.dev/" method="POST">
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <fieldset>
+        <legend>I would like</legend>
+        <label class="choice"><input type="radio" name="kind" value="A demonstration for a region or hospital group" checked><span>A demonstration for a region or hospital group</span></label>
+        <label class="choice"><input type="radio" name="kind" value="A technical briefing for IT"><span>A technical briefing for IT</span></label>
+        <label class="choice"><input type="radio" name="kind" value="Commercial information"><span>Commercial information</span></label>
+      </fieldset>
+      <div class="field-row">
+        <label>Name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Organisation<input type="text" name="org" autocomplete="organization"></label>
+      </div>
+      <label>Work email<input type="email" name="email" autocomplete="email" required></label>
+      <label>Message <span class="opt">(optional)</span><textarea name="message" rows="3"></textarea></label>
+      <button class="btn btn-primary btn-lg" type="submit">Send request <span class="arrow" aria-hidden="true">→</span></button>
+      <p class="form-note">We use these details only to respond to your request. We usually reply within two working days. Prefer email? Write to <a href="mailto:info@syntaric.com">info@syntaric.com</a>.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA ================= -->
+<section class="cta">
+  <div class="container cta-inner">
+    <h2>Ready to see one record across all your repositories?</h2>
+    <a class="btn btn-white btn-lg" href="#contact">Request a demo <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="col-grid">
-      <div class="col-brand">
-        <img src="etc/unio-logo.png" alt="Unio">
-        <p>A shared regional health record, built without moving anybody's data.</p>
-      </div>
-      <div class="col">
-        <h5>Why Unio</h5>
-        <ul><li><a href="#why">The regional case</a></li><li><a href="#how">How it works</a></li><li><a href="#regions">Data ownership</a></li><li><a href="#regions">Audit &amp; oversight</a></li></ul>
-      </div>
-      <div class="col">
-        <h5>For hospitals</h5>
-        <ul><li><a href="#hospitals">Joining a region</a></li><li><a href="#hospitals">What we ask of you</a></li><li><a href="mailto:info@syntaric.com">Support</a></li></ul>
-      </div>
-      <div class="col">
-        <h5>SYNTARIC</h5>
-        <ul><li><a href="https://syntaric.com/">About</a></li><li><a href="mailto:info@syntaric.com">Contact</a></li><li><a href="mailto:info@syntaric.com">Security</a></li></ul>
-      </div>
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="etc/unio-logo.png" alt="Unio" width="2073" height="758">
+      <p>An openEHR federation gateway that joins any number of repositories into one record, developed by SYNTARIC.</p>
     </div>
-    <div class="col-bot">
-      <span>© 2026 SYNTARIC</span>
-      <span>Built on openEHR</span>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="#platform">Federation gateway</a></li>
+        <li><a href="https://unio-console.syntaric.com/" target="_blank" rel="noopener">Operator console</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#fhir">FHIR federation</a></li>
+      </ul>
     </div>
+    <div class="footer-col">
+      <h4>Who we help</h4>
+      <ul>
+        <li><a href="#audience">Regions and networks</a></li>
+        <li><a href="#sources">Source systems</a></li>
+        <li><a href="#audience">Application vendors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="https://syntaric.com/">SYNTARIC</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/andrejcgasper/">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 SYNTARIC</span>
+    <span>openEHR is a trademark of openEHR International.</span>
   </div>
 </footer>
 

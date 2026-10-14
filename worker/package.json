@@ -1,0 +1,14 @@
+{
+  "name": "unio-contact",
+  "private": true,
+  "description": "Cloudflare Worker that forwards the Unio website contact form to email via Resend.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node test/smoke.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

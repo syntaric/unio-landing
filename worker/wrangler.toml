@@ -1,0 +1,39 @@
+# Cloudflare Worker that receives the Unio "Get in touch" form and forwards it
+# as an email through Resend. See ../README.md for the setup steps.
+
+name = "unio-contact"
+main = "src/index.js"
+compatibility_date = "2025-10-01"
+
+# Where the worker is reachable.
+#
+# Default: a workers.dev subdomain, https://unio-contact.<your-account>.workers.dev
+# This works for any Cloudflare account and needs no DNS changes.
+workers_dev = true
+
+# Alternative: a custom hostname. Requires the syntaric.com zone to be on
+# Cloudflare DNS. Uncomment, set workers_dev = false, and update the form action.
+# routes = [
+#   { pattern = "contact.unio.syntaric.com", custom_domain = true }
+# ]
+
+[vars]
+ALLOWED_ORIGINS = "https://unio.syntaric.com"
+TO_EMAIL = "info@syntaric.com"
+FROM_EMAIL = "Unio website <noreply@syntaric.com>"
+REDIRECT_URL = "https://unio.syntaric.com/thanks.html"
+
+# Secrets are not stored here. Set them once with:
+#   npx wrangler secret put RESEND_API_KEY
+#   npx wrangler secret put TURNSTILE_SECRET     (optional)
+
+# Per-IP rate limit: 5 submissions per minute. The worker runs without this
+# binding too, so remove the block if your wrangler version rejects it.
+[[ratelimits]]
+name = "CONTACT_RATELIMIT"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+# Local development: `npm run dev` serves the worker on http://localhost:8787.
+# Overrides for local runs go in a `.dev.vars` file next to this one (it is
+# gitignored); copy `.dev.vars.example` to start.

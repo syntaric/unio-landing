@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local runs with `npm run dev`. Not committed.
+ALLOWED_ORIGINS="http://localhost:8000,http://127.0.0.1:8000"
+REDIRECT_URL="http://localhost:8000/thanks.html"
+RESEND_API_KEY="re_your_test_key"
