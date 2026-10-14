@@ -96,10 +96,13 @@ available to the page.
 
 `images/console/` holds 2x screenshots of the operator console, taken from
 the demo stack with the member names replaced by fictional ones
-(`rz-noord`, `kliniek-zuid`). Nothing in them is a real organisation or a
-real patient. The capture tooling lives next to the design mockup in the main
-UNIO repository, not here; to refresh a shot, re-run it there and copy the PNG
-across. The fake address bars above the captures show `unio-console.syntaric.com`
+(`rz-noord`, `kliniek-zuid`, and for the topology shot three more invented
+regional members). Nothing in them is a real organisation or a real patient.
+The capture tooling lives next to the design mockup in the main UNIO
+repository (`nimbalyst-local/mockups/capture/`), not here; to refresh a shot,
+re-run it there and copy the PNG across. The lead shot is the topology view
+(`topology.png`), which needs the `docker-compose.landing-topology.yml`
+override applied so the federation has more than two members. The fake address bars above the captures show `unio-console.syntaric.com`
 paths, matching where the "See the console" links go.
 
 ---
